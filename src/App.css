@@ -1,0 +1,32 @@
+html, body {
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.main-body {
+  padding-top: 5%;
+  width: 60%;
+  margin: 0 auto;
+}
+
+#nav-ul {
+  display: flex;
+  justify-content: space-around;
+}
+
+#nav-ul > li {
+  list-style: none;
+  font-size: 1.2em;
+}
+
+#nav-ul > li > a {
+  text-decoration: none;
+  padding: 50px 20px;
+  color: black;
+}
+
+#nav-ul > li:hover > a {
+  color: green;
+}
