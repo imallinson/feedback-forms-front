@@ -43,7 +43,7 @@ html, body {
 }
 /*****    END OF NAV    *****/
 /*****    START OF HOMEPAGE    *****/
-#homepage-welcome {
+#heading {
   text-align: center;
 }
 
@@ -105,11 +105,34 @@ html, body {
   transform: scale(1.01);
   filter: brightness(110%);
 }
-
-
 /*****    END OF HOMEPAGE    *****/
 /*****    START OF COHORTS   *****/
+#add-cohort {
+  text-align: center;
+}
 
+#add-cohort > button {
+  padding: 10px;
+  background-color: #1F271B;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  font-size: 1.2em;
+}
+
+.all-cohorts {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.single-cohort {
+  background-color: lightblue;
+  text-align: center;
+  width: 200px;
+  margin: 1%;
+}
 
 
 /*****    END OF COHORTS    *****/

@@ -5,7 +5,7 @@ class HomepageComponent extends Component {
   render() {
     return (
     	<div className="main-body">
-			<h1 id="homepage-welcome">Hello, Matt.</h1>
+			<h1 id="heading">Hello, Matt.</h1>
 			<div className="home-body">
 				<div id="dashboard-item-1">
 					<a href="/cohorts">COHORTS (9)</a>
