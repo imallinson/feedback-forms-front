@@ -14,7 +14,33 @@ import Login from './LoginComponent';
 
 class NavComponent extends Component {
 
+	// constructor() {
+	// 	this.state({
+	// 		loggedIn: false
+	// 	})
+	// }
+
   render() {
+
+  	// authCheck = () => {
+  	// 	if(this.state.loggedIn && cookies.get(trainer)) {
+  	// 		return 	<ul id="nav-ul">
+	  // 					<li><Link to="/home">Home</Link></li>
+			// 			<li><Link to="/cohorts">Cohorts</Link></li>
+			// 			<li><Link to="/trainees">Trainees</Link></li>
+			// 			<li><Link to="/account">Account</Link></li>;
+			// 			<li><Link to="/logout">Logout</Link></li>
+			// 		</ul>
+  	// 	} else if (this.state.loggedIn && !cookies.get(trainer)) {
+  	// 		return 	<ul id="nav-ul">
+	  // 					<li><Link to="/home">Home</Link></li>
+			// 			<li><Link to="/form">Submit Form</Link></li>
+			// 			<li><Link to="/account">Account</Link></li>;
+			// 			<li><Link to="/logout">Logout</Link></li>
+			// 		</ul>;
+  	// 	}
+  	// }
+  	
     return (
     	<Router>
 	    	<div>
