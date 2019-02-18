@@ -74,20 +74,25 @@ html, body {
   margin: 1%;
 }
 
+#right-dashboard {
+  flex: 0.5;
+}
+
 #dashboard-item-1 {
+  flex: 1;
   width: 100%;
   height: 600px;
   background-color: #1F271B;
 }
 
 #dashboard-item-2 {
-  width: 300px;
+  width: 100%;
   height: 300px;
   background-color: #0B4F6C;
 }
 
 #dashboard-item-3 {
-  width: 300px;
+  width: 100%;
   height: 300px;
   background-color: #145C9E;
 }
@@ -113,12 +118,19 @@ html, body {
 
 #add-cohort > button {
   padding: 10px;
+  width: 200px;
   background-color: #1F271B;
   color: white;
   border: none;
   border-radius: 10px;
   margin-bottom: 20px;
   font-size: 1.2em;
+  cursor: pointer;
+}
+
+#add-cohort > button:focus {
+    outline: none;
+    border: none;
 }
 
 .all-cohorts {
@@ -128,13 +140,86 @@ html, body {
 }
 
 .single-cohort {
-  background-color: lightblue;
+  background-image: linear-gradient(#0581b7, #0B4F6C);
+  box-shadow: 4px 4px 2px rgba(0, 0, 0, .5);
   text-align: center;
-  width: 200px;
+  width: 300px;
   margin: 1%;
+  user-select: none;
+  transition: all .3s ease-in-out;
+  font-size: 1.2em;
+  cursor: pointer;
+  color: white;
 }
+.single-cohort:after {
+  display:block;
+  content: '';
+  border-bottom: solid 3px #9cc1fc;  
+  transform: scaleX(0);  
+  transition: transform 200ms ease-in-out;
+}
+.single-cohort:hover:after { transform: scaleX(1); }
+.single-cohort.fromRight:after{ transform-origin:100% 50%; }
+.single-cohort.fromLeft:after{  transform-origin:  0% 50%; }
 
-
+.single-cohort:active {
+  background-color: #06374c;
+}
+/* Reset Select */
+.cohort-filter > select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  outline: 0;
+  box-shadow: none;
+  border: 0 !important;
+  background: #0B4F6C;
+  background-image: none;
+}
+/* Custom Select */
+.cohort-filter {
+  margin: 0 auto;
+  position: relative;
+  display: block;
+  width: 16em;
+  height: 3em;
+  line-height: 3;
+  background: #0B4F6C;
+  overflow: hidden;
+  border-radius: .25em;
+}
+.cohort-filter > select {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0 0 0 .5em;
+  color: #fff;
+  cursor: pointer;
+}
+.cohort-filter > select::-ms-expand {
+  display: none;
+}
+/* Arrow */
+.cohort-filter::after {
+  content: '\25BC';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0 1em;
+  background: #036996;
+  pointer-events: none;
+}
+/* Transition */
+.cohort-filter:hover::after {
+  color: #f39c12;
+}
+.cohort-filter::after {
+  -webkit-transition: .25s all ease;
+  -o-transition: .25s all ease;
+  transition: .25s all ease;
+}
 /*****    END OF COHORTS    *****/
 /*****   START OF TRAINEES  *****/
 

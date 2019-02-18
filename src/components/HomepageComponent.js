@@ -10,7 +10,7 @@ class HomepageComponent extends Component {
 				<div id="dashboard-item-1">
 					<a href="/cohorts">COHORTS (9)</a>
 				</div>
-				<div>
+				<div id="right-dashboard">
 					<div id="dashboard-item-2">
 						<a href="/trainees">TRAINEES (5)</a>
 					</div>
