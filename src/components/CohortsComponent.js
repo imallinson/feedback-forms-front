@@ -6,7 +6,7 @@ class CohortsComponent extends Component {
 
   render() {
     return (
-    	<div class="main-body">
+    	<div className="main-body">
 			<h1>Hello from cohorts.</h1>
 		</div>
     );

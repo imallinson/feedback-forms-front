@@ -1,23 +1,21 @@
 import React, { Component } from 'react';
 import '../App.css';
-
 class HomepageComponent extends Component {
-
 
   render() {
     return (
-    	<div class="main-body">
+    	<div className="main-body">
 			<h1 id="homepage-welcome">Hello, Matt.</h1>
-			<div class="home-body">
+			<div className="home-body">
 				<div id="dashboard-item-1">
-				COHORTS (9)
+					<a href="/cohorts">COHORTS (9)</a>
 				</div>
 				<div>
 					<div id="dashboard-item-2">
-						TRAINEES (5)
+						<a href="/trainees">TRAINEES (5)</a>
 					</div>
 					<div id="dashboard-item-3">
-						ACCOUNT
+						<a href="/account">ACCOUNT</a>
 					</div>
 				</div>
 			</div>
