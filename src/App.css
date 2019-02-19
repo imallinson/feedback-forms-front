@@ -222,9 +222,63 @@ html, body {
 }
 /*****    END OF COHORTS    *****/
 /*****   START OF TRAINEES  *****/
+.trainees-body {
+  display: flex;
+  justify-content: center;
+  /*background-color: white;*/
+  border-radius: 25px;
+}
+
+.trainees-body > div {
+}
+
+#cohort-number {
+  width: 50px;
+}
+
+.unassigned-trainees, .assigned-trainees {
+  font-size: 1.4em;
+  width: 100%;
+  text-align: center;
+  padding-bottom: 10%;
+  border-left: 1px solid rgba(31,39,27,0.3);
+}
+
+.unassigned-trainees {
+  background: #0B4F6C;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 10px;
+  color: white;
+}
+
+.assigned-trainees {
+  background: #145C9E;
+  border-bottom-right-radius: 25px;
+  border-top-right-radius: 10px;
+  color: white;
+}
 
 
+.unassigned-trainees > ul, .assigned-trainees > ul {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 20px 0 0 0;
+  list-style: none;
+  color: black;
+}
 
+.unassigned-trainees > ul > li, .assigned-trainees > ul > li {
+  margin: 0 5px 5px 2px;
+  font-size: 0.9em;
+  padding: 2px;
+  border: 1px solid black;
+  width: 100px;
+  text-align: center;
+  background-color: #fff;
+  user-select: none;
+}
 /*****    END OF TRAINEES   *****/
 /*****   START OF ACCOUNT   *****/
 
