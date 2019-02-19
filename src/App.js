@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import Navbar from './components/NavbarComponent';
-import dragula from 'dragula';
 
 class App extends Component {
   render() {
