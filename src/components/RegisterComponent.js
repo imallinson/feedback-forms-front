@@ -36,7 +36,7 @@ constructor() {
 
   validatePassword = () => {
 
-  	if (this.state.password == 0) {
+  	if (this.state.password === 0) {
   		return <p className="bad-response">Please enter a password</p>
   	}
     if (this.state.password.length < 6 || this.state.password.length > 18) {
@@ -49,28 +49,28 @@ constructor() {
   render() {
     return (
     	<div className="main-body">
-			<div class="container">
+			<div className="container">
 			  <h1 id="heading">Register Account</h1>
 			  <form action="action_page.php">
-			    <div class="row">
-			      <div class="col-25">
-			        <label for="email">Email Address</label>
+			    <div className="row">
+			      <div className="col-25">
+			        <label htmlFor="email">Email Address</label>
 			      </div>
-			      <div class="col-75">
+			      <div className="col-75">
 			        <input type="email" id="email" name="email" placeholder="Example: John.Doe@academytrainee.com" value={this.state.email} onChange={this.updateEmail} required/>
 			        {this.validateEmail()}
 			      </div>
 			    </div>
-			    <div class="row">
-			      <div class="col-25">
-			        <label for="password">Password</label>
+			    <div className="row">
+			      <div className="col-25">
+			        <label htmlFor="password">Password</label>
 			      </div>
-			      <div class="col-75">
+			      <div className="col-75">
 			        <input type="password" id="password" name="password" value={this.state.password} onChange={this.updatePassword} required />
 			        {this.validatePassword()}
 			      </div>
 			    </div>
-			    <div class="row">
+			    <div className="row">
 			      <input type="submit" value="Submit"/>
 			    </div>
 			  </form>

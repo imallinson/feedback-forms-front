@@ -231,7 +231,7 @@ html, body {
 
 
 /*****    END OF ACCOUNT   *****/
-/*****    START OF REGISTER   *****/
+/*****    START OF REGISTER/LOGIN   *****/
 /* Style inputs, select elements and textareas */
 input[type=password], input[type=email]{
   width: 100%;
@@ -304,7 +304,7 @@ input[type=submit] {
 .bad-response {
   color: red;
 }
-/*****    END OF REGISTER   *****/
+/*****    END OF REGISTER/LOGIN   *****/
 /*****   START OF LOGIN   *****/
 
 
