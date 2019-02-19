@@ -262,6 +262,7 @@ html, body {
 .unassigned-trainees > ul, .assigned-trainees > ul {
   display: flex;
   justify-content: center;
+  /*align-items: baseline;*/
   flex-wrap: wrap;
   margin: 0;
   padding: 20px 0 0 0;
@@ -270,14 +271,29 @@ html, body {
 }
 
 .unassigned-trainees > ul > li, .assigned-trainees > ul > li {
-  margin: 0 5px 5px 2px;
+  margin: 0 0 5px 2px;
+  border-right-width: 0 !important;
   font-size: 0.9em;
   padding: 2px;
-  border: 1px solid black;
   width: 100px;
   text-align: center;
   background-color: #fff;
   user-select: none;
+}
+.unassigned-trainees > ul > span, .assigned-trainees > ul > span {
+  margin-right: 5px;
+  height: 31px;
+  width: 15px;
+  text-align: center;
+  background-color: #fff;
+  color: white;
+  cursor: pointer;
+}
+.unassigned-trainees > ul > span {
+  background-color: green;
+}
+.assigned-trainees > ul > span {
+  background-color: red;
 }
 /*****    END OF TRAINEES   *****/
 /*****   START OF ACCOUNT   *****/

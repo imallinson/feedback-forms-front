@@ -3,30 +3,30 @@ import '../App.css';
 
 class TraineeComponent extends Component {
 
-
   render() {
+
     return (
     	<div className="main-body">
 			<h1 id="heading">View and assign trainees</h1>
-			<div class="trainees-body">
-				<div class="unassigned-trainees">
+			<div className="trainees-body">
+				<div className="unassigned-trainees">
 					<h3>UNASSIGNED (12)</h3>
 					<ul>
-						<li>Trainee 1</li>
-						<li>Trainee 2</li>
-						<li>Trainee 3</li>						
-						<li>Trainee 1</li>
-						<li>Trainee 2</li>
-						<li>Trainee 3</li>						
-						<li>Trainee 1</li>
-						<li>Trainee 2</li>
-						<li>Trainee 3</li>						
-						<li>Trainee 1</li>
-						<li>Trainee 2</li>
-						<li>Trainee 3</li>
+						<li>Trainee 1</li><span class="add">+</span>
+						<li>Trainee 2</li><span class="add">+</span>
+						<li>Trainee 3</li><span class="add">+</span>
+						<li>Trainee 1</li><span class="add">+</span>
+						<li>Trainee 2</li><span class="add">+</span>
+						<li>Trainee 3</li><span class="add">+</span>
+						<li>Trainee 1</li><span class="add">+</span>
+						<li>Trainee 2</li><span class="add">+</span>
+						<li>Trainee 3</li><span class="add">+</span>
+						<li>Trainee 1</li><span class="add">+</span>
+						<li>Trainee 2</li><span class="add">+</span>
+						<li>Trainee 3</li><span class="add">+</span>
 					</ul>
 				</div>
-				<div class="assigned-trainees">
+				<div className="assigned-trainees">
 					<h3>ASSIGNED</h3>
 					<strong>GROUP: </strong>
 					<select name="cohort-number" id="cohort-number">
@@ -35,9 +35,9 @@ class TraineeComponent extends Component {
 						<option value="cohort3">3</option>
 					</select>
 					<ul>
-						<li>Trainee 4</li>
-						<li>Trainee 5</li>
-						<li>Trainee 6</li>
+						<li>Trainee 4</li><span class="add">-</span>
+						<li>Trainee 5</li><span class="add">-</span>
+						<li>Trainee 6</li><span class="add">-</span>
 					</ul>
 				</div>
 			</div>
