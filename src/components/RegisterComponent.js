@@ -39,8 +39,7 @@ constructor() {
   	if (this.state.password === 0) {
   		return <p className="bad-response">Please enter a password</p>
   	}
-    if (this.state.password.length < 6 || this.state.password.length > 18) {
-    	console.log(this.state.password.length );    	
+    if (this.state.password.length < 6 || this.state.password.length > 18) {    	
     	return <p className="bad-response">Password between 6 and 18 characters</p>
     } else  {
     	return <p className="good-response">Password is valid</p>
