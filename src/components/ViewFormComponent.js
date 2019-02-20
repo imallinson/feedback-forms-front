@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../App.css';
 
-class SingleUserComponent extends Component {
+class ViewFormComponent extends Component {
 
 
   render() {
@@ -40,4 +40,4 @@ class SingleUserComponent extends Component {
   }
 }
 
-export default SingleUserComponent;
+export default ViewFormComponent;
