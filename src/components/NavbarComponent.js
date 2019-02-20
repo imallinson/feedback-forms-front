@@ -9,6 +9,7 @@ import Homepage from './HomepageComponent';
 import Cohorts from './CohortsComponent';
 import Trainees from './TraineesComponent';
 import Account from './AccountComponent';
+import Form from './FormComponent';
 import Register from './RegisterComponent';
 import Login from './LoginComponent';
 import SingleCohort from './SingleCohortComponent';
@@ -51,6 +52,7 @@ class NavComponent extends Component {
 					<li><Link to="/home">Home</Link></li>
 					<li><Link to="/cohorts">Cohorts</Link></li>
 					<li><Link to="/trainees">Trainees</Link></li>
+					<li><Link to="/form">Form</Link></li>
 					<li><Link to="/account">Account</Link></li>
 					<li><Link to="/register">Register</Link></li>
 					<li><Link to="/login">Login</Link></li>
@@ -59,6 +61,7 @@ class NavComponent extends Component {
 				<Route exact path="/home" component={ Homepage } />
 				<Route exact path="/cohorts" component={ Cohorts } />
 				<Route exact path="/trainees" component={ Trainees } />
+				<Route exact path="/form" component={ Form } />
 				<Route exact path="/account" component={ Account } />
 				<Route exact path="/register" component={ Register } />
 				<Route exact path="/login" component={ Login } />
