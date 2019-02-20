@@ -22,14 +22,14 @@ class CohortsComponent extends Component {
 		      <option value="33">Week DESC</option>
 		    </select>
 		  </div>
-			<div className="all-cohorts">
-				<a href="/singlecohort">
+			<div className="all-cohorts">				
 					<div className="single-cohort">
+					<a href="/singlecohort">
 						<p>Group: 1</p>
 						<p>Pupils: 14</p>
 						<p>Week: 10</p>
+						</a>
 					</div>
-				</a>
 				<div className="single-cohort">
 					<p>Group: 2</p>
 					<p>Pupils: 20</p>

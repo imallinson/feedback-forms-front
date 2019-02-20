@@ -24,22 +24,22 @@ class SingleUserComponent extends Component {
 					<tr>
 						<td>!WEEK_NUMBER!</td>
 						<td>!FEEDBACK_SCORE!</td>
-						<td><a href="/" className="button">VIEW</a></td>
+						<td><a href="/viewform" className="button">VIEW</a></td>
 					</tr>				
 					<tr>
 						<td>!WEEK_NUMBER!</td>
 						<td>!FEEDBACK_SCORE!</td>
-						<td><a href="/" className="button">VIEW</a></td>
+						<td><a href="/viewform" className="button">VIEW</a></td>
 					</tr>
 					<tr>
 						<td>!WEEK_NUMBER!</td>
 						<td>!FEEDBACK_SCORE!</td>
-						<td><a href="/" className="button">VIEW</a></td>
+						<td><a href="/viewform" className="button">VIEW</a></td>
 					</tr>						
 					<tr>
 						<td>!WEEK_NUMBER!</td>
 						<td>!FEEDBACK_SCORE!</td>
-						<td><a href="/" className="button">VIEW</a></td>
+						<td><a href="/viewform" className="button">VIEW</a></td>
 					</tr>		
 				</tbody>
 			</table>
