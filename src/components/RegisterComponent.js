@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import '../App.css';
+import axios from 'axios';
+import bcrypt from 'bcryptjs';
 
 class RegisterComponent extends Component {
 
@@ -7,11 +9,15 @@ constructor() {
  	super();
 
   	this.state = {
+      userName: "",
   		email: "",
   		password: "",
   		error: ""
   	}
 	}
+  updateUsername = (event) => {
+      this.setState({ userName: event.target.value });
+  }
 
   updateEmail = (event) => {
       this.setState({ email: event.target.value });
@@ -46,18 +52,64 @@ constructor() {
     	return <p className="good-response">Password is valid</p>
     }
   }
+
+    setUser = () => {
+      var salt = bcrypt.genSaltSync(10);
+      var hash = bcrypt.hashSync(this.state.password, salt);
+        axios({
+            method: "post",
+            url: 'http://localhost:8080/accounts/createAccount',
+            data: {
+                userName: this.state.userName,
+                email: this.state.email,
+                password: hash,
+                admin: false
+            }
+        }).then(resp => {
+          console.log(resp);
+          if (typeof resp.data == "string") {
+            console.log(typeof resp.data);
+            this.setState({
+              error: resp.data
+            });
+          }
+          else
+          {
+            this.setState({
+              error: "Account created successfully."
+            });
+              setTimeout(function(){
+                window.history.back();
+              }, 2000);
+          }
+        }).catch(error => {
+          
+          this.setState({
+            error: "Error occured. Please try again with different credentials."
+          })
+        })
+    } 
+
   render() {
     return (
     	<div className="main-body">
 			<div className="container">
 			  <h1 id="heading">Register Account</h1>
-			  <form action="action_page.php">
+			  <form>
+          <div className="row">
+            <div className="col-25">
+              <label htmlFor="email">Username</label>
+            </div>
+            <div className="col-75">
+              <input type="text" id="userName" name="userName" placeholder="Example: Dave" onChange={this.updateUsername} required/>
+            </div>
+          </div>
 			    <div className="row">
 			      <div className="col-25">
 			        <label htmlFor="email">Email Address</label>
 			      </div>
 			      <div className="col-75">
-			        <input type="email" id="email" name="email" placeholder="Example: John.Doe@academytrainee.com" value={this.state.email} onChange={this.updateEmail} required/>
+			        <input type="email" id="email" name="email" placeholder="Example: John.Doe@academytrainee.com" onChange={this.updateEmail} required/>
 			        {this.validateEmail()}
 			      </div>
 			    </div>
@@ -66,13 +118,13 @@ constructor() {
 			        <label htmlFor="password">Password</label>
 			      </div>
 			      <div className="col-75">
-			        <input type="password" id="password" name="password" value={this.state.password} onChange={this.updatePassword} required />
+			        <input type="password" id="password" name="password" onChange={this.updatePassword} required />
 			        {this.validatePassword()}
 			      </div>
 			    </div>
 			    <div className="row">
-			      <input type="submit" value="Submit"/>
-			    </div>
+            <button id="register-button" type="button" onClick={this.setUser}>Register</button>
+          </div>
 			  </form>
 			  </div>
 		</div>
