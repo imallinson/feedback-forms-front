@@ -12,18 +12,18 @@ class TraineeComponent extends Component {
 				<div className="unassigned-trainees">
 					<h3>UNASSIGNED (12)</h3>
 					<ul>
-						<li>Trainee 1</li><span class="add">+</span>
-						<li>Trainee 2</li><span class="add">+</span>
-						<li>Trainee 3</li><span class="add">+</span>
-						<li>Trainee 1</li><span class="add">+</span>
-						<li>Trainee 2</li><span class="add">+</span>
-						<li>Trainee 3</li><span class="add">+</span>
-						<li>Trainee 1</li><span class="add">+</span>
-						<li>Trainee 2</li><span class="add">+</span>
-						<li>Trainee 3</li><span class="add">+</span>
-						<li>Trainee 1</li><span class="add">+</span>
-						<li>Trainee 2</li><span class="add">+</span>
-						<li>Trainee 3</li><span class="add">+</span>
+						<li>Trainee 1</li><span className="add">+</span>
+						<li>Trainee 2</li><span className="add">+</span>
+						<li>Trainee 3</li><span className="add">+</span>
+						<li>Trainee 1</li><span className="add">+</span>
+						<li>Trainee 2</li><span className="add">+</span>
+						<li>Trainee 3</li><span className="add">+</span>
+						<li>Trainee 1</li><span className="add">+</span>
+						<li>Trainee 2</li><span className="add">+</span>
+						<li>Trainee 3</li><span className="add">+</span>
+						<li>Trainee 1</li><span className="add">+</span>
+						<li>Trainee 2</li><span className="add">+</span>
+						<li>Trainee 3</li><span className="add">+</span>
 					</ul>
 				</div>
 				<div className="assigned-trainees">
@@ -35,9 +35,9 @@ class TraineeComponent extends Component {
 						<option value="cohort3">3</option>
 					</select>
 					<ul>
-						<li>Trainee 4</li><span class="add">-</span>
-						<li>Trainee 5</li><span class="add">-</span>
-						<li>Trainee 6</li><span class="add">-</span>
+						<li>Trainee 4</li><span className="add">-</span>
+						<li>Trainee 5</li><span className="add">-</span>
+						<li>Trainee 6</li><span className="add">-</span>
 					</ul>
 				</div>
 			</div>

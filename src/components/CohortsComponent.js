@@ -11,7 +11,7 @@ class CohortsComponent extends Component {
 			<div id="add-cohort">
 				<button>Add Cohort</button>
 			</div>
-		  <div class="cohort-filter">
+		  <div className="cohort-filter">
 		    <select name="cohort-selection" id="cohort-selection">
 		      <option>Sort By...</option>
 		      <option value="1">Group Number ASC</option>
@@ -23,11 +23,13 @@ class CohortsComponent extends Component {
 		    </select>
 		  </div>
 			<div className="all-cohorts">
-				<div className="single-cohort">
-					<p>Group: 1</p>
-					<p>Pupils: 14</p>
-					<p>Week: 10</p>
-				</div>
+				<a href="/singlecohort">
+					<div className="single-cohort">
+						<p>Group: 1</p>
+						<p>Pupils: 14</p>
+						<p>Week: 10</p>
+					</div>
+				</a>
 				<div className="single-cohort">
 					<p>Group: 2</p>
 					<p>Pupils: 20</p>

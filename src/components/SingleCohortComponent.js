@@ -8,7 +8,7 @@ class SingleCohortComponent extends Component {
     return (
     	<div className="main-body">
 			<h1>Cohort !COHORT_NUMBER!</h1>
-			<p>Trainee: !TRAINEE_NAME!</p>
+			<p>Trainer: !TRAINER_NAME!</p>
 			<p>Week Number: !WEEK NUMBER!</p>
 			<h3>Trainees</h3>
 			<table>
@@ -17,6 +17,7 @@ class SingleCohortComponent extends Component {
 						<td>Name</td>
 						<td>Email</td>
 						<td>Week</td>
+						<td>View</td>
 					</tr>
 				</thead>
 				<tbody>
@@ -24,21 +25,25 @@ class SingleCohortComponent extends Component {
 						<td>!TRAINEE_ONE!</td>
 						<td>!TRAINEE_EMAIL_ONE!</td>
 						<td>10</td>
+						<td><a href="/singleuser" className="button">VIEW</a></td>
 					</tr>					
 					<tr>
 						<td>!TRAINEE_TWO!</td>
 						<td>!TRAINEE_EMAIL_TWO!</td>
 						<td>10</td>
+						<td><a href="/singleuser" className="button">VIEW</a></td>
 					</tr>					
 					<tr>
 						<td>!TRAINEE_THREE!</td>
 						<td>!TRAINEE_EMAIL_THREE!</td>
 						<td>10</td>
+						<td><a href="/singleuser" className="button">VIEW</a></td>
 					</tr>					
 					<tr>
 						<td>!TRAINEE_FOUR!</td>
 						<td>!TRAINEE_EMAIL_FOUR!</td>
 						<td>10</td>
+						<td><a href="/singleuser" className="button">VIEW</a></td>
 					</tr>
 				</tbody>
 			</table>

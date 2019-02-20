@@ -12,6 +12,7 @@ import Account from './AccountComponent';
 import Register from './RegisterComponent';
 import Login from './LoginComponent';
 import SingleCohort from './SingleCohortComponent';
+import SingleUser from './SingleUserComponent';
 
 class NavComponent extends Component {
 
@@ -61,6 +62,7 @@ class NavComponent extends Component {
 				<Route exact path="/register" component={ Register } />
 				<Route exact path="/login" component={ Login } />
 				<Route exact path="/singlecohort" component={ SingleCohort } />
+				<Route exact path="/singleuser" component={ SingleUser } />
 
 			</div>
 		</Router>
