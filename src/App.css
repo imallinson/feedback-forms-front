@@ -307,7 +307,7 @@ html, body {
 /*****    END OF ACCOUNT   *****/
 /*****    START OF REGISTER/LOGIN   *****/
 /* Style inputs, select elements and textareas */
-input[type=password], input[type=email]{
+input[type=password], input[type=email], input[type=text]{
   width: 100%;
   padding: 12px;
   border: 1px solid #ccc;
@@ -323,7 +323,7 @@ label {
 }
 
 /* Style the submit button */
-input[type=submit] {
+#register-button, #login-button {
   background-color: #4CAF50;
   color: white;
   padding: 12px 20px;
@@ -333,6 +333,10 @@ input[type=submit] {
   float: right;
 }
 
+#login-and-error {
+  margin-top: 10px;
+  text-align: center;
+}
 /* Style the container */
 .container {
   margin: 0 auto;

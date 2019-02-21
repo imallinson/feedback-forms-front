@@ -1,17 +1,29 @@
 import React, { Component } from 'react';
 import '../App.css';
+import bcrypt from 'bcryptjs';
+import axios from 'axios';
+import Cookies from 'universal-cookie';
+
+import auth from '../Auth'
+
 
 class LoginComponent extends Component {
 
-constructor() {
+  constructor() {
  	super();
 
   	this.state = {
+  		users: [],
+  		userName: "",
   		email: "",
   		password: "",
   		error: ""
   	}
-	}
+  }
+
+  updateUsername = (event) => {
+      this.setState({ userName: event.target.value });
+  }
 
   updateEmail = (event) => {
       this.setState({ email: event.target.value });
@@ -21,12 +33,44 @@ constructor() {
       this.setState({ password: event.target.value });
   }
 
+  setUser = () => {
+		axios({
+      method:'get',
+      url: 'http://localhost:8080/accounts/getAccounts',
+  	})
+    .then(response => {
+    	
+    	let message;
+
+      this.setState({
+        users: response.data
+      });
+      let email = this.state.email;
+			let password = this.state.password;
+
+			for (let user of this.state.users) {
+	    	if (email === user.email && bcrypt.compareSync(password, user.password)) {
+
+	    		auth.login(user);
+
+	    		message = "Logged in successfully."; 
+					break;
+	    	}	else {
+	    		message = "Username or password invalid";
+	    	}
+	    }
+			this.setState({
+    			error: message
+    		})    
+  	})
+	} 
+
   render() {
     return (
     	<div className="main-body">
 			<div className="container">
 			  <h1 id="heading">Login</h1>
-			  <form action="action_page.php">
+			  <form>
 			    <div className="row">
 			      <div className="col-25">
 			        <label htmlFor="email">Email Address</label>
@@ -43,8 +87,10 @@ constructor() {
 			        <input type="password" id="password" name="password" value={this.state.password} onChange={this.updatePassword} required />
 			      </div>
 			    </div>
-			    <div className="row">
-			      <input type="submit" value="Submit"/>
+			    <div id="login-and-error" className="row">
+			    
+				  <button id="login-button" type="button" onClick={this.setUser}>Login</button>
+				  <span id="error-message">{this.state.error}</span>
 			    </div>
 			  </form>
 			  </div>
