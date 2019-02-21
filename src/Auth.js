@@ -23,8 +23,7 @@ class Auth {
 		window.history.back();
 		setTimeout(function(){ 
 			window.location.reload()}, 200);
-		cb();
-    }, 2000);
+    }, 1500);
 	}
 
 	logout(cb) {
@@ -34,8 +33,6 @@ class Auth {
 		cookies.remove('_id');
 		cookies.remove('admin');
 		this.authenticated = false;
-		window.location.reload();
-		cb();
 	}
 
 	isAuthenticated() {
