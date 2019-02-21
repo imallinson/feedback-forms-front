@@ -1,9 +1,54 @@
 import React, { Component } from 'react';
 import '../App.css';
+import axios from 'axios';
 
 class TraineeComponent extends Component {
 
+	constructor() {
+		super();
+
+		this.state = {
+			trainees: [],
+			unassignedList: [],
+			assignedList: []
+		}
+
+		axios({
+			method: 'get',
+			url: 'http://localhost:8080/accounts/getAccounts'
+		}).then(response => {
+
+			let uList = [];
+			let aList = [];
+
+			this.setState({
+				trainees: response.data
+			})
+
+			for (let i = 0; i < response.data.length; i++) {
+				if (response.data[i].cohortID === null) {
+					uList.push(response.data[i]);
+				} else if (response.data[i].cohortID != null) {
+					aList.push(response.data[i]);
+				}
+			}
+
+			this.setState({
+				unassignedList: uList,
+				assignedList: aList
+			})
+		})
+	}
+
   render() {
+
+  	let unassignedList = this.state.unassignedList.map((unassignedTrainee, i) => (
+  			<li>{unassignedTrainee.userName}</li>
+  	));
+
+  	let assignedList = this.state.assignedList.map((assignedTrainee, i) => (
+  			<li>{assignedTrainee.userName}</li>
+  	));
 
     return (
     	<div className="main-body">
@@ -12,18 +57,7 @@ class TraineeComponent extends Component {
 				<div className="unassigned-trainees">
 					<h3>UNASSIGNED (12)</h3>
 					<ul>
-						<li>Trainee 1</li><span className="add">+</span>
-						<li>Trainee 2</li><span className="add">+</span>
-						<li>Trainee 3</li><span className="add">+</span>
-						<li>Trainee 1</li><span className="add">+</span>
-						<li>Trainee 2</li><span className="add">+</span>
-						<li>Trainee 3</li><span className="add">+</span>
-						<li>Trainee 1</li><span className="add">+</span>
-						<li>Trainee 2</li><span className="add">+</span>
-						<li>Trainee 3</li><span className="add">+</span>
-						<li>Trainee 1</li><span className="add">+</span>
-						<li>Trainee 2</li><span className="add">+</span>
-						<li>Trainee 3</li><span className="add">+</span>
+						{ unassignedList }
 					</ul>
 				</div>
 				<div className="assigned-trainees">
@@ -35,9 +69,7 @@ class TraineeComponent extends Component {
 						<option value="cohort3">3</option>
 					</select>
 					<ul>
-						<li>Trainee 4</li><span className="add">-</span>
-						<li>Trainee 5</li><span className="add">-</span>
-						<li>Trainee 6</li><span className="add">-</span>
+						{ assignedList }
 					</ul>
 				</div>
 			</div>
