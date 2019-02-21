@@ -12,45 +12,43 @@ import Account from './AccountComponent';
 import Register from './RegisterComponent';
 import Login from './LoginComponent';
 
+import Auth from '../Auth';
+
 class NavComponent extends Component {
 
-	// constructor() {
-	// 	this.state({
-	// 		loggedIn: false
-	// 	})
-	// }
 
   render() {
 
-  	// authCheck = () => {
-  	// 	if(this.state.loggedIn && cookies.get(trainer)) {
-  	// 		return 	<ul id="nav-ul">
-	  // 					<li><Link to="/home">Home</Link></li>
-			// 			<li><Link to="/cohorts">Cohorts</Link></li>
-			// 			<li><Link to="/trainees">Trainees</Link></li>
-			// 			<li><Link to="/account">Account</Link></li>;
-			// 			<li><Link to="/logout">Logout</Link></li>
-			// 		</ul>
-  	// 	} else if (this.state.loggedIn && !cookies.get(trainer)) {
-  	// 		return 	<ul id="nav-ul">
-	  // 					<li><Link to="/home">Home</Link></li>
-			// 			<li><Link to="/form">Submit Form</Link></li>
-			// 			<li><Link to="/account">Account</Link></li>;
-			// 			<li><Link to="/logout">Logout</Link></li>
-			// 		</ul>;
-  	// 	}
-  	// }
-  	
-    return (
-    	<Router>
-	    	<div>
-				<ul id="nav-ul">
+  	function authCheck() {
+  		if(Auth.isAuthenticated()) 
+  		{
+  			return <ul id="nav-ul">
 					<li><Link to="/home">Home</Link></li>
 					<li><Link to="/cohorts">Cohorts</Link></li>
 					<li><Link to="/trainees">Trainees</Link></li>
 					<li><Link to="/account">Account</Link></li>
-					<li><Link to="/register">Register</Link></li>
-					<li><Link to="/login">Login</Link></li>
+					<li onClick={() => {
+						Auth.logout(() => {
+							console.log(Auth.isAuthenticated());
+						});
+					}}><Link to="/">Logout</Link></li>
+				</ul>;
+  		} else if (!Auth.isAuthenticated())
+  		 {
+  			return 	<ul id="nav-ul">
+	  					<li><Link to="/home">Home</Link></li>
+						<li><Link to="/account">Account</Link></li>
+						<li><Link to="/register">Register</Link></li>
+						<li><Link to="/login">Login</Link></li>
+					</ul>;
+  		}
+  	}
+  	
+    return (
+    	<Router>
+	    	<div>
+	    	{ authCheck() }
+				<ul id="nav-ul">
 				</ul>
 				<Route exact path="/" component={ Homepage } />
 				<Route exact path="/home" component={ Homepage } />

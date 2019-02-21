@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import '../App.css';
 import bcrypt from 'bcryptjs';
 import axios from 'axios';
-
 import Cookies from 'universal-cookie';
+
+import auth from '../Auth'
+
 
 class LoginComponent extends Component {
 
@@ -37,8 +39,7 @@ class LoginComponent extends Component {
       url: 'http://localhost:8080/accounts/getAccounts',
   	})
     .then(response => {
-
-    	const cookies = new Cookies();
+    	
     	let message;
 
       this.setState({
@@ -50,9 +51,9 @@ class LoginComponent extends Component {
 			for (let user of this.state.users) {
 	    	if (email === user.email && bcrypt.compareSync(password, user.password)) {
 
+	    		auth.login(user);
+
 	    		message = "Logged in successfully."; 
-	    		cookies.set('email', user.email);
-	    		cookies.set('_id', user.accountID);
 					break;
 	    	}	else {
 	    		message = "Username or password invalid";

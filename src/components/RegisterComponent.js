@@ -12,6 +12,7 @@ constructor() {
       userName: "",
   		email: "",
   		password: "",
+      admin: null,
   		error: ""
   	}
 	}
@@ -53,42 +54,57 @@ constructor() {
     }
   }
 
-    setUser = () => {
-      var salt = bcrypt.genSaltSync(10);
-      var hash = bcrypt.hashSync(this.state.password, salt);
-        axios({
-            method: "post",
-            url: 'http://localhost:8080/accounts/createAccount',
-            data: {
-                userName: this.state.userName,
-                email: this.state.email,
-                password: hash,
-                admin: false
-            }
-        }).then(resp => {
-          console.log(resp);
-          if (typeof resp.data == "string") {
-            console.log(typeof resp.data);
-            this.setState({
-              error: resp.data
-            });
-          }
-          else
-          {
-            this.setState({
-              error: "Account created successfully."
-            });
-              setTimeout(function(){
-                window.history.back();
-              }, 2000);
-          }
-        }).catch(error => {
-          
-          this.setState({
-            error: "Error occured. Please try again with different credentials."
-          })
-        })
-    } 
+  adminCheck = () => {
+    if (this.state.email.endsWith("qa.com")) {
+      return this.setUser(true);
+      
+    }
+    else if (this.state.email.endsWith("academytrainee.com")) {
+       return this.setUser(false);
+    } else {
+      this.setState({
+        error: "Email must be a qa or academytrainee address."
+      })
+    }
+  }
+
+  setUser = (admin) => {
+    let salt = bcrypt.genSaltSync(10);
+    let hash = bcrypt.hashSync(this.state.password, salt);
+
+    axios({
+        method: "post",
+        url: 'http://localhost:8080/accounts/createAccount',
+        data: {
+            userName: this.state.userName,
+            email: this.state.email,
+            password: hash,
+            admin: admin
+        }
+    }).then(resp => {
+      console.log(resp);
+      if (typeof resp.data == "string") {
+        console.log(typeof resp.data);
+        this.setState({
+          error: resp.data
+        });
+      }
+      else
+      {
+        this.setState({
+          error: "Account created successfully."
+        });
+          setTimeout(function(){
+            window.history.back();
+          }, 2000);
+      }
+    }).catch(error => {
+      
+      this.setState({
+        error: "Error occured. Please try again with different credentials."
+      })
+    })
+  } 
 
   render() {
     return (
@@ -123,7 +139,9 @@ constructor() {
 			      </div>
 			    </div>
 			    <div className="row">
-            <button id="register-button" type="button" onClick={this.setUser}>Register</button>
+
+            <button id="register-button" type="button" onClick={this.adminCheck}>Register</button>
+            <span id="error-message">{this.state.error}</span>
           </div>
 			  </form>
 			  </div>
