@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-    BrowserRouter as Router,
+    BrowserRouter as 
     Route,
     Link
 } from 'react-router-dom';
@@ -20,9 +20,9 @@ class NavComponent extends Component {
 	    	<div>
 	    	<ul id="nav-ul">
 					<li><Link to="/home">Home</Link></li>
-					<li> {JSON.parse(Auth.isAuthenticated() && cookies.get('admin') == "false") ? <Link to="/form">Form</Link> : null }</li>
-					<li> {JSON.parse(Auth.isAuthenticated() && cookies.get('admin') == "true") ? <Link to="/cohorts">Cohorts</Link> : null }</li>
-					<li> {JSON.parse(Auth.isAuthenticated() && cookies.get('admin') == "true") ? <Link to="/trainees">Trainees</Link> : null }</li>
+					<li> {JSON.parse(Auth.isAuthenticated() && cookies.get('admin') === "false") ? <Link to="/form">Form</Link> : null }</li>
+					<li> {JSON.parse(Auth.isAuthenticated() && cookies.get('admin') === "true") ? <Link to="/cohorts">Cohorts</Link> : null }</li>
+					<li> {JSON.parse(Auth.isAuthenticated() && cookies.get('admin') === "true") ? <Link to="/trainees">Trainees</Link> : null }</li>
 					<li> {JSON.parse(Auth.isAuthenticated()) ? <Link to="/account">Account</Link> : null }</li>
 					<li> {JSON.parse(Auth.isAuthenticated()) ? null: <Link to="/register">Register</Link>}</li>
 					<li> {JSON.parse(Auth.isAuthenticated()) ? <Link to="/home" onClick={() => {Auth.logout(() => {});}}>Logout</Link> : <Link to="/login">Login</Link>}</li>

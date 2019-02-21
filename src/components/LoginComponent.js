@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import '../App.css';
 import bcrypt from 'bcryptjs';
 import axios from 'axios';
-import Cookies from 'universal-cookie';
 
 import auth from '../Auth'
 

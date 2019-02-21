@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import {
-	  NavLink,
+import {	  
     BrowserRouter as Router
 } from 'react-router-dom';
 import Routes from './Routes';

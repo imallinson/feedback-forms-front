@@ -1,15 +1,44 @@
 import React, { Component } from 'react';
 import '../App.css';
+import axios from 'axios';
 
 class CohortsComponent extends Component {
 
+	constructor() {
+		super();
+
+		this.state = {
+			cohortList: []
+		}
+
+		axios({
+			method: 'get',
+			url: 'http://localhost:8080/cohort/getCohorts'
+		}).then(response => {
+
+			this.setState({
+				cohortList: response.data
+			})
+		})
+	}
 
   render() {
+
+  	let cohorts = this.state.cohortList.map((cohort, i) => (
+			<div className="single-cohort">
+			<a href="/singlecohort">
+				<p>{cohort.cohortName}</p>
+				<p>Trainees: 14</p>
+				<p>Week: {cohort.week}</p>
+				</a>
+			</div>
+  	));
+
     return (
     	<div className="main-body">
 			<h1 id="heading">View all cohorts</h1>
 			<div id="add-cohort">
-				<button>Add Cohort</button>
+				<button><a href="/newcohort">Add Cohort</a></button>
 			</div>
 		  <div className="cohort-filter">
 		    <select name="cohort-selection" id="cohort-selection">
