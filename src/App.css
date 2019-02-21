@@ -91,22 +91,28 @@ html, body {
   background-color: #0B4F6C;
 }
 
+#dashboard-item-2-not-logged {
+  width: 100%;
+  height: 600px;
+  background-color: #0B4F6C;
+}
+
 #dashboard-item-3 {
   width: 100%;
   height: 300px;
   background-color: #145C9E;
 }
 
-#dashboard-item-1 > a, #dashboard-item-2 > a, #dashboard-item-3 > a {
+#dashboard-item-1 > a, #dashboard-item-2 > a, #dashboard-item-3 > a, #dashboard-item-2-not-logged > a {
   text-decoration: none;
   color: white;
 }
 
-#dashboard-item-1, #dashboard-item-2, #dashboard-item-3 {
+#dashboard-item-1, #dashboard-item-2, #dashboard-item-3, #dashboard-item-2-not-logged {
   transition: all .3s ease-in-out;
 }
 
-#dashboard-item-1:hover, #dashboard-item-2:hover, #dashboard-item-3:hover {
+#dashboard-item-1:hover, #dashboard-item-2:hover, #dashboard-item-3:hover, #dashboard-item-2-not-logged:hover {
   transform: scale(1.01);
   filter: brightness(110%);
 }
