@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../App.css';
 import axios from 'axios';
 import bcrypt from 'bcryptjs';
+import * as constants from "../Consts.js";
 
 class RegisterComponent extends Component {
 
@@ -9,15 +10,20 @@ constructor() {
  	super();
 
   	this.state = {
-      userName: "",
+      firstName: "",
+      lastName: "",
   		email: "",
   		password: "",
       admin: null,
   		error: ""
   	}
 	}
-  updateUsername = (event) => {
-      this.setState({ userName: event.target.value });
+  updateFirstName = (event) => {
+      this.setState({ firstName: event.target.value });
+  }
+
+  updateLastName = (event) => {
+      this.setState({ lastName: event.target.value });
   }
 
   updateEmail = (event) => {
@@ -73,14 +79,16 @@ constructor() {
 
     axios({
         method: "post",
-        url: 'http://localhost:8080/accounts/createAccount',
+        url: constants.newAccount + '/accounts/createAccount',
         data: {
-            userName: this.state.userName,
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
             email: this.state.email,
             password: hash,
             admin: admin
         }
     }).then(resp => {
+      console.log("HELLO");
       console.log(resp);
       if (typeof resp.data == "string") {
         console.log(typeof resp.data);
@@ -113,10 +121,18 @@ constructor() {
 			  <form>
           <div className="row">
             <div className="col-25">
-              <label htmlFor="email">Username</label>
+              <label htmlFor="firstName">First Name</label>
             </div>
             <div className="col-75">
-              <input type="text" id="userName" name="userName" placeholder="Example: Dave" onChange={this.updateUsername} required/>
+              <input type="text" id="firstName" name="firstName" onChange={this.updateFirstName} required/>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-25">
+              <label htmlFor="lastName">Last Name</label>
+            </div>
+            <div className="col-75">
+              <input type="text" id="lastName" name="lastName" onChange={this.updateLastName} required/>
             </div>
           </div>
 			    <div className="row">

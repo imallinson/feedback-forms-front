@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../App.css';
 import axios from 'axios';
+import * as constants from "../Consts.js";
 
 class NewCohortComponent extends Component {
 
@@ -34,7 +35,7 @@ class NewCohortComponent extends Component {
   createCohort = () => {
     axios({
       method: 'post',
-      url: 'http://localhost:8089/cohorts/createCohort',
+      url: constants.newCohort + '/cohorts/createCohort',
       data: {
         cohortName: this.state.cohortName,
         trainerName: this.state.cohortTrainer,
@@ -43,8 +44,12 @@ class NewCohortComponent extends Component {
       }
     })
     .then(response => {
-      
-    })
+      setTimeout(function(){
+        window.history.back();
+        setTimeout(function(){ 
+          window.location.reload()}, 200);
+        }, 300);
+      })
   }
 
   render() {

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../App.css';
 import axios from 'axios';
+import * as constants from "../Consts.js";
 
 class CohortsComponent extends Component {
 
@@ -13,7 +14,7 @@ class CohortsComponent extends Component {
 
 		axios({
 			method: 'get',
-			url: 'http://localhost:8080/cohort/getCohorts'
+			url: constants.get + '/cohorts/getCohorts'
 		}).then(response => {
 
 			this.setState({
@@ -25,7 +26,7 @@ class CohortsComponent extends Component {
   render() {
 
   	let cohorts = this.state.cohortList.map((cohort, i) => (
-			<div className="single-cohort">
+			<div className="single-cohort" key={i} >
 			<a href="/singlecohort">
 				<p>{cohort.cohortName}</p>
 				<p>Trainees: 14</p>
@@ -52,48 +53,7 @@ class CohortsComponent extends Component {
 		    </select>
 		  </div>
 			<div className="all-cohorts">				
-					<div className="single-cohort">
-					<a href="/singlecohort">
-						<p>Group: 1</p>
-						<p>Pupils: 14</p>
-						<p>Week: 10</p>
-						</a>
-					</div>
-				<div className="single-cohort">
-					<p>Group: 2</p>
-					<p>Pupils: 20</p>
-					<p>Week: 8</p>
-				</div>
-				<div className="single-cohort">
-					<p>Group: 3</p>
-					<p>Pupils: 12</p>
-					<p>Week: 6</p>
-				</div>
-				<div className="single-cohort">
-					<p>Group: 4</p>
-					<p>Pupils: 9</p>
-					<p>Week: 4</p>
-				</div>
-				<div className="single-cohort">
-					<p>Group: 5</p>
-					<p>Pupils: 7</p>
-					<p>Week: 2</p>
-				</div>
-				<div className="single-cohort">
-					<p>Group: 3</p>
-					<p>Pupils: 12</p>
-					<p>Week: 6</p>
-				</div>
-				<div className="single-cohort">
-					<p>Group: 4</p>
-					<p>Pupils: 9</p>
-					<p>Week: 4</p>
-				</div>
-				<div className="single-cohort">
-					<p>Group: 5</p>
-					<p>Pupils: 7</p>
-					<p>Week: 2</p>
-				</div>
+				{ cohorts }
 			</div>
 		</div>
     );
