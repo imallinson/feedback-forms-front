@@ -29,7 +29,7 @@ class Routes extends Component {
 		<Route exact path="/register" component={ Register } />
 		<Route exact path="/login" component={ Login } />
 		<Route exact path="/singlecohort/:id" component={ Cohort } />
-		<Route exact path="/singleuser/:id" component={ User } />
+		<Route exact path="/singleuser/" component={ User } />
 		<Route exact path="/viewform" component={ ViewForm } />
 		<Route exact path="/newcohort" component={ NewCohort } />
 	</div>
