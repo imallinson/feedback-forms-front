@@ -35,7 +35,7 @@ class LoginComponent extends Component {
   setUser = () => {
 		axios({
       method:'get',
-      url: 'http://localhost:8080/accounts/getAccounts',
+      url: constants.get + '/accounts/getAccounts',
   	})
     .then(response => {
     	
