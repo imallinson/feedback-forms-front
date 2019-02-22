@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../App.css';
 import axios from 'axios';
+import * as constants from "../Consts.js";
 
 class TraineeComponent extends Component {
 
@@ -15,7 +16,7 @@ class TraineeComponent extends Component {
 
 		axios({
 			method: 'get',
-			url: 'http://localhost:8080/accounts/getAccounts'
+			url: constants.get + '/accounts/getAccounts'
 		}).then(response => {
 
 			let uList = [];
@@ -26,9 +27,9 @@ class TraineeComponent extends Component {
 			})
 
 			for (let i = 0; i < response.data.length; i++) {
-				if (response.data[i].cohortID === null) {
+				if (response.data[i].cohortID === null && response.data[i].admin === false) {
 					uList.push(response.data[i]);
-				} else if (response.data[i].cohortID != null) {
+				} else if (response.data[i].cohortID != null && response.data[i].admin === false) {
 					aList.push(response.data[i]);
 				}
 			}
@@ -43,11 +44,11 @@ class TraineeComponent extends Component {
   render() {
 
   	let unassignedList = this.state.unassignedList.map((unassignedTrainee, i) => (
-  			<li>{unassignedTrainee.userName}</li>
+  			<li key={i}>{unassignedTrainee.email}</li>
   	));
 
   	let assignedList = this.state.assignedList.map((assignedTrainee, i) => (
-  			<li>{assignedTrainee.userName}</li>
+  			<li key={i}>{assignedTrainee.email}</li>
   	));
 
     return (
@@ -55,7 +56,7 @@ class TraineeComponent extends Component {
 			<h1 id="heading">View and assign trainees</h1>
 			<div className="trainees-body">
 				<div className="unassigned-trainees">
-					<h3>UNASSIGNED (12)</h3>
+					<h3>UNASSIGNED ({unassignedList.length})</h3>
 					<ul>
 						{ unassignedList }
 					</ul>

@@ -139,6 +139,11 @@ html, body {
     border: none;
 }
 
+#add-cohort > button > a {
+  text-decoration: none;
+  color: white;
+}
+
 .all-cohorts {
   display: flex;
   justify-content: center;
@@ -223,7 +228,7 @@ html, body {
 }
 /* Transition */
 .cohort-filter:hover::after {
-  color: #1F271B;
+  color: white;
 }
 .cohort-filter::after {
   -webkit-transition: .25s all ease;
@@ -313,7 +318,7 @@ html, body {
 /*****    END OF ACCOUNT   *****/
 /*****    START OF REGISTER/LOGIN   *****/
 /* Style inputs, select elements and textareas */
-input[type=password], input[type=email], input[type=text]{
+input[type=password], input[type=email], input[type=text], input[type=number] {
   width: 100%;
   padding: 12px;
   border: 1px solid #ccc;

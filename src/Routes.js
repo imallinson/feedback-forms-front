@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {
-	  NavLink,
     BrowserRouter as Router,
     Route,
     Link
@@ -15,6 +14,7 @@ import Login from './components/LoginComponent';
 import Cohort from './components/SingleCohortComponent';
 import User from './components/SingleUserComponent';
 import ViewForm from './components/ViewFormComponent';
+import NewCohort from './components/NewCohortComponent';
 
 class Routes extends Component {
   render() {
@@ -28,9 +28,10 @@ class Routes extends Component {
 		<Route exact path="/account" component={ Account } />
 		<Route exact path="/register" component={ Register } />
 		<Route exact path="/login" component={ Login } />
-		<Route exact path="/singlecohort" component={ Cohort } />
-		<Route exact path="/singleuser" component={ User } />
+		<Route exact path="/singlecohort/:id" component={ Cohort } />
+		<Route exact path="/singleuser/" component={ User } />
 		<Route exact path="/viewform" component={ ViewForm } />
+		<Route exact path="/newcohort" component={ NewCohort } />
 	</div>
 	)}
 }
