@@ -14,7 +14,7 @@ class CohortsComponent extends Component {
 
 		axios({
 			method: 'get',
-			url: constants.get + '/cohorts/getCohorts'
+			url: constants.get + 'getCohorts'
 		}).then(response => {
 
 			this.setState({
