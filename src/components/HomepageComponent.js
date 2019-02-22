@@ -14,7 +14,8 @@ class HomepageComponent extends Component {
 
 		this.state = {
 			trainees: [],
-			unassignedList: 0
+			unassignedList: 0,
+			cohorts: 0
 		}
 
 		axios({
@@ -27,15 +28,23 @@ class HomepageComponent extends Component {
 			this.setState({
 				trainees: response.data
 			})
-
 			for (let i = 0; i < response.data.length; i++) {
-				if (response.data[i].cohortID === null) {
+				if (response.data[i].cohortID === null && response.data[i].admin === false) {
 					uList.push(response.data[i]);
 				}
 			}
-
 			this.setState({
 				unassignedList: uList.length
+			})
+		})
+
+		axios({
+			method: 'get',
+			url: constants.get + '/cohorts/getCohorts'
+		}).then(response => {
+
+			this.setState({
+				cohorts: response.data.length
 			})
 		})
 	}
@@ -46,7 +55,7 @@ class HomepageComponent extends Component {
 				{JSON.parse(auth.isAuthenticated()) ?
 					<div className="home-body">
 						<div id="dashboard-item-1">
-							{JSON.parse(auth.isAuthenticated() && cookies.get('admin') === 'true') ? <a href="/cohorts">COHORTS (9)</a> : <a href="/form">FORM</a>}
+							{JSON.parse(auth.isAuthenticated() && cookies.get('admin') === 'true') ? <a href="/cohorts">COHORTS ({ this.state.cohorts })</a> : <a href="/form">FORM</a>}
 						</div>
 
 						<div id="right-dashboard">
