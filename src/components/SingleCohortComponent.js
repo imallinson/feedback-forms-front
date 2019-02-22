@@ -1,15 +1,43 @@
 import React, { Component } from 'react';
 import '../App.css';
+import axios from 'axios';
+import * as constants from "../Consts.js";
 
 class SingleCohortComponent extends Component {
 
+	constructor(props) {
+		super();
+
+	  this.state = {
+			cohort: "",
+			cohortName: "",			
+			trainerName: "",
+			week: 0,
+			description: ""
+		}
+
+		axios({
+			method: 'get',
+			url: constants.get + '/cohorts/getCohortById/' + props.match.params.id
+		}).then(response => {
+
+			this.setState({
+				cohort: response.data,
+				cohortName: response.data.cohortName,
+				trainerName: response.data.trainerName,
+				week: response.data.week,
+				description: response.data.cohortDescription
+			})
+		})
+	}
 
   render() {
     return (
     	<div className="main-body">
-			<h1>Cohort !COHORT_NUMBER!</h1>
-			<p>Trainer: !TRAINER_NAME!</p>
-			<p>Week Number: !WEEK NUMBER!</p>
+			<h1>{this.state.cohortName}</h1>
+			<p>Trainer: {this.state.trainerName}</p>
+			<p>Week Number: {this.state.week}</p>
+			<p>Description: {this.state.description}</p>
 			<h3>Trainees</h3>
 			<table>
 				<thead>
