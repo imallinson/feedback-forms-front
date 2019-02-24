@@ -13,7 +13,8 @@ class SingleCohortComponent extends Component {
 			cohortName: "",			
 			trainerName: "",
 			week: 0,
-			description: ""
+			description: "",
+			traineesList: []
 		}
 
 		axios({
@@ -30,14 +31,30 @@ class SingleCohortComponent extends Component {
 				description: response.data.cohortDescription
 			})
 		})
+
+		axios({
+			method: 'get',
+			url: constants.getAccounts + '/getByCohortID/' + props.match.params.id
+		}).then(response => {
+			this.setState({
+				traineesList: response.data
+			})
+		})
 	}
 
   render() {
+  	let trainees = this.state.traineesList.map((trainee, i) => (
+			<tr key={i}>
+			  <td>{trainee.firstName + " " + trainee.lastName}</td>
+				<td>{trainee.email}</td>
+				<td><a href={"/singleuser/" + trainee.accountID} className="button">VIEW</a></td>
+			</tr>
+  	));
+
     return (
     	<div className="main-body">
 			<h1>{this.state.cohortName}</h1>
 			<p>Trainer: {this.state.trainerName}</p>
-			<p>Week Number: {this.state.week}</p>
 			<p>Description: {this.state.description}</p>
 			<h3>Trainees</h3>
 			<table>
@@ -45,35 +62,11 @@ class SingleCohortComponent extends Component {
 					<tr>
 						<td>Name</td>
 						<td>Email</td>
-						<td>Week</td>
 						<td>View</td>
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>!TRAINEE_ONE!</td>
-						<td>!TRAINEE_EMAIL_ONE!</td>
-						<td>10</td>
-						<td><a href="/singleuser" className="button">VIEW</a></td>
-					</tr>					
-					<tr>
-						<td>!TRAINEE_TWO!</td>
-						<td>!TRAINEE_EMAIL_TWO!</td>
-						<td>10</td>
-						<td><a href="/singleuser" className="button">VIEW</a></td>
-					</tr>					
-					<tr>
-						<td>!TRAINEE_THREE!</td>
-						<td>!TRAINEE_EMAIL_THREE!</td>
-						<td>10</td>
-						<td><a href="/singleuser" className="button">VIEW</a></td>
-					</tr>					
-					<tr>
-						<td>!TRAINEE_FOUR!</td>
-						<td>!TRAINEE_EMAIL_FOUR!</td>
-						<td>10</td>
-						<td><a href="/singleuser" className="button">VIEW</a></td>
-					</tr>
+					{trainees}
 				</tbody>
 			</table>
 		</div>

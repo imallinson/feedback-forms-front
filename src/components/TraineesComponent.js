@@ -60,8 +60,6 @@ class TraineeComponent extends Component {
 
 	updateCohortNumber = (event) => {
       this.setState({ cohortNumber: event.target.value });
-      console.log("Event:" + event.target.value);
-      console.log("State:" + this.state.cohortNumber);
   }
 
 	assign = (unassigned) => {
@@ -79,7 +77,6 @@ class TraineeComponent extends Component {
 			}
 		})
 		.then(response => {
-			console.log(response);
 		})
 	}
 
@@ -98,7 +95,6 @@ class TraineeComponent extends Component {
 			}
 		})
 		.then(response => {
-			console.log(response);
 		})
 	}
 	
@@ -111,7 +107,7 @@ class TraineeComponent extends Component {
 
   	let assignedList = () => {
   		this.setState({
-				filterList:this.state.assignedList.filter(assignedTrainee => assignedTrainee.cohortID == this.state.cohortNumber)
+				filterList:this.state.assignedList.filter(assignedTrainee => assignedTrainee.cohortID === parseInt(this.state.cohortNumber))
   		})
   	}
 

@@ -29,8 +29,8 @@ class CohortsComponent extends Component {
   	let cohorts = this.state.cohortList.map((cohort, i) => (
 			<div className="single-cohort" key={i} >
 			<a href={"/singlecohort/" + cohort.cohortId} >
+				<p>Number: {cohort.cohortId}</p>
 				<p>{cohort.cohortName}</p>
-				<p>Trainees: 14</p>
 				<p>Week: {cohort.week}</p>
 				</a>
 			</div>

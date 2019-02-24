@@ -12,7 +12,8 @@ class NewCohortComponent extends Component {
       cohortName: "",
       cohortTrainer: "",
       cohortWeek: "",
-      cohortDescription: ""
+      cohortDescription: "",
+      date: ""
     }
   }
 
@@ -26,6 +27,10 @@ class NewCohortComponent extends Component {
 
   updateWeekNumber = (event) => {
       this.setState({ cohortWeek: event.target.value });
+  }
+
+  updateDate = (event) => {
+      this.setState({ date: event.target.value });
   }
 
   updateDescription = (event) => {
@@ -74,12 +79,20 @@ class NewCohortComponent extends Component {
 			        <input type="text" id="cohort-trainer" name="cohort-trainer" placeholder="Example: Matt Something" onChange={this.updateCohortTrainer} required/>
 			      </div>
 			    </div>
-			    <div className="row">
+          <div className="row">
+            <div className="col-25">
+              <label htmlFor="password">Week Number</label>
+            </div>
+            <div className="col-75">
+              <input type="number" id="cohort-week" name="cohort-week" onChange={this.updateWeekNumber} min="0" required />
+            </div>
+          </div>			    
+          <div className="row">
 			      <div className="col-25">
-			        <label htmlFor="password">Week Number</label>
+			        <label htmlFor="date">Week Number</label>
 			      </div>
 			      <div className="col-75">
-			        <input type="number" id="cohort-week" name="cohort-week" onChange={this.updateWeekNumber} min="0" required />
+			        <input type="date" onChange={this.updateDate} name="cohort-start" id="cohort-start"/>
 			      </div>
 			    </div>
           <div className="row">

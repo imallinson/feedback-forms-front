@@ -28,8 +28,7 @@ class FormComponent extends Component {
 	  	})
 	  	.then(response => {
 	  		for (let i = 0; i < response.data.length; i++) {
-	  			console.log(cookies.get('_id'));
-	  			if (cookies.get('_id') == response.data[i].accountID) {
+	  			if (cookies.get('_id') === response.data[i].accountID) {
 			  		this.setState({
 			  			user: response.data[i]
 			  		})
@@ -53,15 +52,11 @@ class FormComponent extends Component {
       }
     })
     .then(response => {
-    	console.log(response);
       })
   }
 
-
-
   updateQuestion1 = (event) => {
       this.setState({ question1: event.target.value });
-      console.log("HI");
   }
 
   updateQuestion2 = (event) => {
@@ -77,7 +72,6 @@ class FormComponent extends Component {
   }
   updateSlider = (event) => {
       this.setState({ sliderValue: event.target.value });
-      console.log(event.target.value);
   }
 
   showSlider = () => {

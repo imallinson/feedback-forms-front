@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import {
-    BrowserRouter as Router,
-    Route,
-    Link
+    Route
 } from 'react-router-dom';
 import Homepage from './components/HomepageComponent';
 import SubmitForm from './components/FormComponent';
@@ -21,17 +19,17 @@ class Routes extends Component {
   	return (
   	<div>
 		<Route exact path="/" component={ Homepage } />
-		<Route exact path="/home" component={ Homepage } />
-		<Route exact path="/form" component={ SubmitForm } />
-		<Route exact path="/cohorts" component={ Cohorts } />
-		<Route exact path="/trainees" component={ Trainees } />
-		<Route exact path="/account" component={ Account } />
-		<Route exact path="/register" component={ Register } />
-		<Route exact path="/login" component={ Login } />
-		<Route exact path="/singlecohort/:id" component={ Cohort } />
-		<Route exact path="/singleuser/" component={ User } />
-		<Route exact path="/viewform" component={ ViewForm } />
-		<Route exact path="/newcohort" component={ NewCohort } />
+		<Route path="/home" component={ Homepage } />
+		<Route path="/form" component={ SubmitForm } />
+		<Route path="/cohorts" component={ Cohorts } />
+		<Route path="/trainees" component={ Trainees } />
+		<Route path="/account" component={ Account } />
+		<Route path="/register" component={ Register } />
+		<Route path="/login" component={ Login } />
+		<Route path="/singlecohort/:id" component={ Cohort } />
+		<Route path="/singleuser/:id" component={ User } />
+		<Route path="/viewform/:id" component={ ViewForm } />
+		<Route path="/newcohort" component={ NewCohort } />
 	</div>
 	)}
 }
