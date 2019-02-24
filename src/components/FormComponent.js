@@ -1,39 +1,83 @@
 import React, { Component } from 'react';
 import '../App.css';
 import '../js/form';
+import axios from 'axios';
+import * as constants from "../Consts.js";
+import Cookies from 'universal-cookie';
+
+const cookies = new Cookies();
 
 class FormComponent extends Component {
 
-constructor() {
- 	super();
+	constructor() {
+	 	super();
 
-  	this.state = {
-  		question1: "",
-  		question2: "",
-  		question3: "",
-  		question4: "",
-  		error: "",
-  		sliderValue: 6
-  	}
-}
+	  	this.state = {
+	  		user: "",
+	  		question1: "",
+	  		question2: "",
+	  		question3: "",
+	  		question4: "",
+	  		error: "",
+	  		sliderValue: 6
+	  	}
+			axios({
+	      method:'get',
+	      // url: 'http://localhost:8080/accounts/getAccounts',
+	      url: constants.getAccounts + '/getAccounts'
+	  	})
+	  	.then(response => {
+	  		for (let i = 0; i < response.data.length; i++) {
+	  			console.log(cookies.get('_id'));
+	  			if (cookies.get('_id') == response.data[i].accountID) {
+			  		this.setState({
+			  			user: response.data[i]
+			  		})
+	  			}
+	  		}
+	  	})
+	}
+
+  createFeedback = () => {
+    axios({
+      method: 'post',
+      url: constants.newForm + '/addFeedbackForm',
+      data: {
+      	accountID: this.state.user.accountID,
+      	cohortID: this.state.user.cohortID,
+        score: this.state.sliderValue,
+        question1: this.state.question1,
+        question2: this.state.question2,
+        question3: this.state.question3,
+        question4: this.state.question4
+      }
+    })
+    .then(response => {
+    	console.log(response);
+      })
+  }
+
+
 
   updateQuestion1 = (event) => {
-      this.setState({ updateQuestion1: event.target.value });
+      this.setState({ question1: event.target.value });
+      console.log("HI");
   }
 
   updateQuestion2 = (event) => {
-      this.setState({ updateQuestion2: event.target.value });
+      this.setState({ question2: event.target.value });
   }
 
   updateQuestion3 = (event) => {
-      this.setState({ updateQuestion3: event.target.value });
+      this.setState({ question3: event.target.value });
   }
 
   updateQuestion4 = (event) => {
-      this.setState({ updateQuestion4: event.target.value });
+      this.setState({ question4: event.target.value });
   }
   updateSlider = (event) => {
       this.setState({ sliderValue: event.target.value });
+      console.log(event.target.value);
   }
 
   showSlider = () => {
@@ -103,7 +147,7 @@ constructor() {
 			      </div>
 			    </div>
 			    <div className="row">
-			      <input id="submit-form" type="submit" value="Submit"/>
+			      <button id="register-button" type="button" onClick={this.createFeedback}>Create</button>
 			    </div>
 			  </form>
 			  </div>

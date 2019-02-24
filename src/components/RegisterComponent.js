@@ -79,7 +79,8 @@ constructor() {
 
     axios({
         method: "post",
-        url: constants.newAccount + '/accounts/createAccount',
+        // url: constants.newAccount + '/accounts/createAccount',
+        url: constants.newAccount + 'createAccount',
         data: {
             firstName: this.state.firstName,
             lastName: this.state.lastName,

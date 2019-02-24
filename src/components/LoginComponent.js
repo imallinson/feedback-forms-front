@@ -3,8 +3,8 @@ import '../App.css';
 import bcrypt from 'bcryptjs';
 import axios from 'axios';
 
-import auth from '../Auth'
-
+import auth from '../Auth';
+import * as constants from "../Consts.js";
 
 class LoginComponent extends Component {
 
@@ -35,7 +35,8 @@ class LoginComponent extends Component {
   setUser = () => {
 		axios({
       method:'get',
-      url: 'http://localhost:8080/accounts/getAccounts',
+      // url: 'http://localhost:8080/accounts/getAccounts',
+      url: constants.getAccounts + '/getAccounts'
   	})
     .then(response => {
     	

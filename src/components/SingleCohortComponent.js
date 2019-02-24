@@ -18,7 +18,8 @@ class SingleCohortComponent extends Component {
 
 		axios({
 			method: 'get',
-			url: constants.get + '/cohorts/getCohortById/' + props.match.params.id
+			// url: constants.get + '/cohorts/getCohortById/' + props.match.params.id
+			url: constants.getCohorts + 'getCohortByID/' + props.match.params.id
 		}).then(response => {
 
 			this.setState({

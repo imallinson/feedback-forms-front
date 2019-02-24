@@ -20,7 +20,8 @@ class HomepageComponent extends Component {
 
 		axios({
 			method: 'get',
-			url: constants.get + '/accounts/getAccounts'
+			// url: constants.get + '/accounts/getAccounts'
+			url: constants.getAccounts + '/getAccounts'
 		}).then(response => {
 
 			let uList = [];
@@ -40,7 +41,8 @@ class HomepageComponent extends Component {
 
 		axios({
 			method: 'get',
-			url: constants.get + '/cohorts/getCohorts'
+			// url: constants.get + '/cohorts/getCohorts'
+			url: constants.getCohorts + 'getCohorts'
 		}).then(response => {
 
 			this.setState({

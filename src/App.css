@@ -310,6 +310,15 @@ html, body {
 .assigned-trainees > ul > span {
   background-color: red;
 }
+#unassigned-trainee {
+  font-size: 1.1em;
+  min-width: 20%;
+  width: auto;
+}
+#cohort-number {
+  width: 60%;
+  font-size: 1.1em;
+}
 /*****    END OF TRAINEES   *****/
 /*****   START OF ACCOUNT   *****/
 

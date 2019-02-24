@@ -10,13 +10,30 @@ class TraineeComponent extends Component {
 
 		this.state = {
 			trainees: [],
+			cohortList: [],
 			unassignedList: [],
-			assignedList: []
+			assignedList: [],
+			filterList: [],
+			cohortNumber: 0
 		}
 
 		axios({
 			method: 'get',
-			url: constants.get + '/accounts/getAccounts'
+			// url: constants.get + 'getCohorts'
+			url: constants.getCohorts + 'getCohorts'
+		}).then(response => {
+			this.setState({
+				cohortList: response.data,
+				cohortNumber: response.data[0].cohortId
+			})
+		}).catch(error => {
+			console.log(error);
+		})
+
+		axios({
+			method: 'get',
+			// url: constants.get + '/accounts/getAccounts'
+			url: constants.getAccounts + '/getAccounts'
 		}).then(response => {
 
 			let uList = [];
@@ -41,14 +58,69 @@ class TraineeComponent extends Component {
 		})
 	}
 
+	updateCohortNumber = (event) => {
+      this.setState({ cohortNumber: event.target.value });
+      console.log("Event:" + event.target.value);
+      console.log("State:" + this.state.cohortNumber);
+  }
+
+	assign = (unassigned) => {
+		axios({
+			method: 'put',
+			// url: constants.get + '/accounts/getAccounts'
+			url: constants.getAccounts + '/updateAccount/' + unassigned._id,
+			data: {
+				accountID: unassigned.accountID,
+				firstName: unassigned.firstName, 
+				lastName: unassigned.lastName,
+				email: unassigned.email,
+				password: unassigned.password,
+				cohortID: this.state.cohortNumber
+			}
+		})
+		.then(response => {
+			console.log(response);
+		})
+	}
+
+	unAssign = (assigned) => {
+		axios({
+			method: 'put',
+			// url: constants.get + '/accounts/getAccounts'
+			url: constants.getAccounts + '/updateAccount/' + assigned._id,
+			data: {
+				accountID: assigned.accountID,
+				firstName: assigned.firstName, 
+				lastName: assigned.lastName,
+				email: assigned.email,
+				password: assigned.password,
+				cohortID: null
+			}
+		})
+		.then(response => {
+			console.log(response);
+		})
+	}
+	
+
   render() {
 
   	let unassignedList = this.state.unassignedList.map((unassignedTrainee, i) => (
-  			<li key={i}>{unassignedTrainee.email}</li>
+  			<li id="unassigned-trainee" key={i} onClick={() => this.assign(unassignedTrainee)}>{unassignedTrainee.email.substr(0, unassignedTrainee.email.indexOf('@'))}</li>
   	));
 
-  	let assignedList = this.state.assignedList.map((assignedTrainee, i) => (
-  			<li key={i}>{assignedTrainee.email}</li>
+  	let assignedList = () => {
+  		this.setState({
+				filterList:this.state.assignedList.filter(assignedTrainee => assignedTrainee.cohortID == this.state.cohortNumber)
+  		})
+  	}
+
+  	let filteredList = this.state.filterList.map((filteredTrainee, i) => (
+  			<li id="filtered-trainee" key={i} onClick={() => this.unAssign(filteredTrainee)}>{filteredTrainee.email.substr(0, filteredTrainee.email.indexOf('@'))}</li>
+  	));
+
+  	let cohorts = this.state.cohortList.map((cohort, i) => (
+  		<option key={i} value={cohort.cohortId}>{cohort.cohortName}</option>
   	));
 
     return (
@@ -64,13 +136,12 @@ class TraineeComponent extends Component {
 				<div className="assigned-trainees">
 					<h3>ASSIGNED</h3>
 					<strong>GROUP: </strong>
-					<select name="cohort-number" id="cohort-number">
-						<option value="cohort1">1</option>
-						<option value="cohort2">2</option>
-						<option value="cohort3">3</option>
+					<select name="cohort-number" id="cohort-number" onChange={(event) => {this.updateCohortNumber(event); assignedList();}}>
+						<option>Select a group</option>
+						{ cohorts }
 					</select>
 					<ul>
-						{ assignedList }
+						{ filteredList }
 					</ul>
 				</div>
 			</div>
