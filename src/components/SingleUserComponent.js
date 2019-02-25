@@ -33,15 +33,17 @@ class SingleUserComponent extends Component {
 			url: constants.gateway + 'getFeedbackFormsByAccountID/' + props.match.params.id
 		}).then(response => {
 
-		  	this.data = [{name: 'Week 1', uv: JSON.parse(response.data[0] == null) ? 0 : response.data[1].score },
+		  	this.data = [ {name: 'Week 1', uv: JSON.parse(response.data[0] == null) ? 0 : response.data[0].score },
 		  				  {name: 'Week 2', uv: JSON.parse(response.data[1] == null) ? 0 : response.data[1].score },
 		  				  {name: 'Week 3', uv: JSON.parse(response.data[2] == null) ? 0 : response.data[2].score },
 		  				  {name: 'Week 4', uv: JSON.parse(response.data[3] == null) ? 0 : response.data[3].score },
-		  				  {name: 'Week 5', uv: JSON.parse(response.data[4] == null) ? 0 : response.data[4].score }
-
+		  				  {name: 'Week 5', uv: JSON.parse(response.data[4] == null) ? 0 : response.data[4].score },
+		  				  {name: 'Week 5', uv: JSON.parse(response.data[5] == null) ? 0 : response.data[5].score },
+		  				  {name: 'Week 5', uv: JSON.parse(response.data[6] == null) ? 0 : response.data[6].score },
+		  				  {name: 'Week 5', uv: JSON.parse(response.data[7] == null) ? 0 : response.data[7].score },
+		  				  {name: 'Week 5', uv: JSON.parse(response.data[8] == null) ? 0 : response.data[8].score },
+		  				  {name: 'Week 5', uv: JSON.parse(response.data[9] == null) ? 0 : response.data[9].score }
 		  				]
-
-			console.log(response.data);
 			this.setState({
 				feedbackList: response.data,
 				feedbackSize: response.data.length
@@ -53,7 +55,6 @@ class SingleUserComponent extends Component {
   render() {
 
   	let feedbackData = this.state.feedbackList.map((feedback, i) => (
-
 			<tr key={i}>
 			  <td>Week: {feedback.week}</td>
 				<td>Score: {feedback.score}</td>

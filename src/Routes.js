@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import {
     Route
 } from 'react-router-dom';
+import {ProtectedRoute} from './Protected.route';
+
 import Homepage from './components/HomepageComponent';
 import SubmitForm from './components/FormComponent';
 import Cohorts from './components/CohortsComponent';
@@ -21,15 +23,15 @@ class Routes extends Component {
 		<Route exact path="/" component={ Homepage } />
 		<Route path="/home" component={ Homepage } />
 		<Route path="/form" component={ SubmitForm } />
-		<Route path="/cohorts" component={ Cohorts } />
-		<Route path="/trainees" component={ Trainees } />
+		<ProtectedRoute  path="/cohorts" component={ Cohorts } />
+		<ProtectedRoute  path="/trainees" component={ Trainees } />
 		<Route path="/account" component={ Account } />
 		<Route path="/register" component={ Register } />
 		<Route path="/login" component={ Login } />
-		<Route path="/singlecohort/:id" component={ Cohort } />
-		<Route path="/singleuser/:id" component={ User } />
-		<Route path="/viewform/:id" component={ ViewForm } />
-		<Route path="/newcohort" component={ NewCohort } />
+		<ProtectedRoute  path="/singlecohort/:id" component={ Cohort } />
+		<ProtectedRoute  path="/singleuser/:id" component={ User } />
+		<ProtectedRoute  path="/viewform/:id" component={ ViewForm } />
+		<ProtectedRoute  path="/newcohort" component={ NewCohort } />
 	</div>
 	)}
 }
