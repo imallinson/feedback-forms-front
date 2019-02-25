@@ -15,8 +15,10 @@ class CohortsComponent extends Component {
 		axios({
 			method: 'get',
 			// url: constants.get + 'getCohorts'
-			url: constants.getCohorts + 'getCohorts'
+			url: constants.gateway + 'cohortsGetCohorts'
 		}).then(response => {
+
+			console.log(response);
 
 			this.setState({
 				cohortList: response.data
@@ -27,6 +29,7 @@ class CohortsComponent extends Component {
   render() {
 
   	let cohorts = this.state.cohortList.map((cohort, i) => (
+
 			<div className="single-cohort" key={i} >
 			<a href={"/singlecohort/" + cohort.cohortId} >
 				<p>Number: {cohort.cohortId}</p>

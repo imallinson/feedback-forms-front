@@ -24,11 +24,11 @@ class FormComponent extends Component {
 			axios({
 	      method:'get',
 	      // url: 'http://localhost:8080/accounts/getAccounts',
-	      url: constants.getAccounts + '/getAccounts'
+	      url: constants.gateway + 'getAccounts'
 	  	})
 	  	.then(response => {
 	  		for (let i = 0; i < response.data.length; i++) {
-	  			if (cookies.get('_id') === response.data[i].accountID) {
+	  			if (cookies.get('_id') == response.data[i].accountID) {
 			  		this.setState({
 			  			user: response.data[i]
 			  		})
@@ -40,7 +40,7 @@ class FormComponent extends Component {
   createFeedback = () => {
     axios({
       method: 'post',
-      url: constants.newForm + '/addFeedbackForm',
+      url: constants.gateway + 'addFeedbackForm',
       data: {
       	accountID: this.state.user.accountID,
       	cohortID: this.state.user.cohortID,
@@ -52,6 +52,8 @@ class FormComponent extends Component {
       }
     })
     .then(response => {
+    	console.log(this.state.user.accountID);
+    	console.log(response);
       })
   }
 

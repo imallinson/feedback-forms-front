@@ -20,7 +20,7 @@ class SingleCohortComponent extends Component {
 		axios({
 			method: 'get',
 			// url: constants.get + '/cohorts/getCohortById/' + props.match.params.id
-			url: constants.getCohorts + 'getCohortByID/' + props.match.params.id
+			url: constants.gateway + 'getCohortByCohortID/' + props.match.params.id
 		}).then(response => {
 
 			this.setState({
@@ -34,15 +34,24 @@ class SingleCohortComponent extends Component {
 
 		axios({
 			method: 'get',
-			url: constants.getAccounts + '/getByCohortID/' + props.match.params.id
+			url: constants.gateway + 'getAccountsByCohortID/' + props.match.params.id
 		}).then(response => {
-			this.setState({
-				traineesList: response.data
-			})
+
+			if (response.data === "null") {
+				this.setState({
+					traineesList: []
+				})
+			} else {
+
+				this.setState({
+					traineesList: response.data
+				})
+			}
 		})
 	}
 
   render() {
+
   	let trainees = this.state.traineesList.map((trainee, i) => (
 			<tr key={i}>
 			  <td>{trainee.firstName + " " + trainee.lastName}</td>

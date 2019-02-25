@@ -36,7 +36,7 @@ class LoginComponent extends Component {
 		axios({
       method:'get',
       // url: 'http://localhost:8080/accounts/getAccounts',
-      url: constants.getAccounts + '/getAccounts'
+      url: constants.gateway + 'getAccounts'
   	})
     .then(response => {
     	

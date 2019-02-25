@@ -14,7 +14,7 @@ class ViewFormComponent extends Component {
 
 		axios({
 			method: 'get',
-			url: constants.getFeedback + 'getFeedbackFormByID/' + props.match.params.id
+			url: constants.gateway + 'getFeedbackFormByID/' + props.match.params.id
 		}).then(response => {
 			this.setState({
 				feedbackList: response.data

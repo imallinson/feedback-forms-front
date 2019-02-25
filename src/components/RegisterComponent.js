@@ -80,7 +80,7 @@ constructor() {
     axios({
         method: "post",
         // url: constants.newAccount + '/accounts/createAccount',
-        url: constants.newAccount + 'createAccount',
+        url: constants.gateway + 'createAccount',
         data: {
             firstName: this.state.firstName,
             lastName: this.state.lastName,
