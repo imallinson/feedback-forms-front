@@ -526,5 +526,9 @@ tr:nth-child(even) {
   background-color: FireBrick;
   color: White;
 }
+
+#single-user-chart {
+  width: 500px;
+}
 /*****   END OF SINGLE COHORT   *****/
 
