@@ -23,6 +23,8 @@ class SingleCohortComponent extends Component {
 			url: constants.gateway + 'getCohortByCohortID/' + props.match.params.id
 		}).then(response => {
 
+			console.log(response);
+
 			this.setState({
 				cohort: response.data,
 				cohortName: response.data.cohortName,

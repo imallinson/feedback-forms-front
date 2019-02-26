@@ -89,8 +89,6 @@ constructor() {
             admin: admin
         }
     }).then(resp => {
-      console.log("HELLO");
-      console.log(resp);
       if (typeof resp.data == "string") {
         console.log(typeof resp.data);
         this.setState({

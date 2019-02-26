@@ -526,9 +526,22 @@ tr:nth-child(even) {
   background-color: FireBrick;
   color: White;
 }
-
 #single-user-chart {
-  width: 500px;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.single-user-body {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+#single-user-info {
+  flex: 1;
+}
+
+#single-user-feedback {
+  flex: 2;
 }
 /*****   END OF SINGLE COHORT   *****/
 

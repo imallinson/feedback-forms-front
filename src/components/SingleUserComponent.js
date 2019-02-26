@@ -5,6 +5,7 @@ import * as constants from "../Consts.js";
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts';
 
 var data = [];
+
 class SingleUserComponent extends Component {
 
 
@@ -28,6 +29,8 @@ class SingleUserComponent extends Component {
 				trainee: response.data,
 				flagged: response.data.flagged.toString()
 			})
+
+			console.log(response.data);
 		})
 
 		axios({
@@ -66,7 +69,24 @@ class SingleUserComponent extends Component {
 	}
 
 	flagTrainee = () => {
-		console.log("hello");
+		axios({
+			method: 'put',
+			// url: constants.get + '/accounts/getAccounts'
+			url: constants.gateway + 'updateAccountBy_id/' + this.state.trainee._id,
+			data: {
+				accountID: this.state.trainee.accountID,
+				admin: this.state.trainee.admin,
+				firstName: this.state.trainee.firstName, 
+				lastName: this.state.trainee.lastName,
+				email: this.state.trainee.email,
+				password: this.state.trainee.password,
+				cohortID: this.state.trainee.cohortID,
+				flagged: !this.state.trainee.flagged
+			}
+		})
+		.then(response => {
+
+		})
 	}
 	
 
@@ -96,23 +116,29 @@ class SingleUserComponent extends Component {
     		<div id="single-user-chart">
     			{ renderLineChart }
     		</div>
-			<h1>{this.state.trainee.firstName} {this.state.trainee.lastName}</h1><a id="flag-trainee" onClick={this.flagTrainee} className="button">FLAG</a>
-			<p>Cohort Number: {this.state.trainee.cohortID}</p>
-			<p>Flagged? {this.state.flagged}</p>
-			<p>Feedback given: {this.state.feedbackSize}</p>
-			<h3>Feedback</h3>
-			<table>
-				<thead>
-					<tr>
-						<td>Week</td>
-						<td>Score</td>
-						<td>View feedback</td>
-					</tr>
-				</thead>
-				<tbody>
-					{feedbackData}	
-				</tbody>
-			</table>
+    		<div className="single-user-body">
+				<div id="single-user-info">
+					<h1>{this.state.trainee.firstName} {this.state.trainee.lastName}</h1><a id="flag-trainee" onClick={this.flagTrainee} className="button">FLAG</a>
+					<p>Cohort Number: {this.state.trainee.cohortID}</p>
+					<p>Flagged? {this.state.flagged}</p>
+					<p>Feedback given: {this.state.feedbackSize}</p>
+				</div>
+				<div id="single-user-feedback">
+					<h3>Feedback</h3>
+					<table>
+						<thead>
+							<tr>
+								<td>Week</td>
+								<td>Score</td>
+								<td>View feedback</td>
+							</tr>
+						</thead>
+						<tbody>
+							{feedbackData}	
+						</tbody>
+					</table>
+				</div>
+			</div>
 		</div>
     );
   }

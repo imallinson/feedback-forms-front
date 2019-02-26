@@ -50,7 +50,7 @@ class NewCohortComponent extends Component {
       }
     })
     .then(response => {
-      console.log(response);
+      this.props.history.push("/cohorts");
     })
   }
 

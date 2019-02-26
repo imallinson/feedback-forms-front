@@ -42,7 +42,7 @@ class HomepageComponent extends Component {
 		axios({
 			method: 'get',
 			// url: constants.get + '/cohorts/getCohorts'
-			url: constants.gateway + 'cohortsGetCohorts'
+			url: constants.gateway + 'getCohorts'
 		}).then(response => {
 
 			this.setState({

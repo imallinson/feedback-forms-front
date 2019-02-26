@@ -9,7 +9,7 @@ import {TraineeprotectedRoute} from './Traineeprotected.route';
 import Homepage from './components/HomepageComponent';
 import SubmitForm from './components/FormComponent';
 import Cohorts from './components/CohortsComponent';
-import Trainees from './components/TraineesComponent';
+import Trainees from './components/TraineesComponent.1';
 import Account from './components/AccountComponent';
 import Register from './components/RegisterComponent';
 import Login from './components/LoginComponent';

@@ -9,15 +9,29 @@ class ViewFormComponent extends Component {
 		super(props);
 
 		this.state = ({
-			feedbackList: ""
+			feedbackList: "",
+			user: ""
 		})
 
 		axios({
 			method: 'get',
 			url: constants.gateway + 'getFeedbackFormByID/' + props.match.params.id
 		}).then(response => {
+
 			this.setState({
 				feedbackList: response.data
+			})
+
+			axios({
+				method: 'get',
+				url: constants.gateway + 'getAccountByAccountID/' + response.data.accountID
+			}).then(res => {
+
+				console.log(res);
+
+				this.setState({
+					user: res.data
+				})
 			})
 		})
 	}
@@ -25,10 +39,8 @@ class ViewFormComponent extends Component {
   render() {
     return (
     	<div className="main-body">
-			<h1>Cohort !COHORT_NUMBER!</h1>
-			<p>Trainee: !TRAINEE_NAME!</p>
-			<p>Week Number: !WEEK NUMBER!</p>
-			<p>Feedback given: !FEEDBACK_GIVEN!</p>
+			<h1>{this.state.user.firstName} {this.state.user.lastName}</h1>
+			<p>Cohort Number: {this.state.user.cohortID}</p>
 			<h3>Feedback Form</h3>
 			
 			<div>
