@@ -19,7 +19,9 @@ class FormComponent extends Component {
 	  		question3: "",
 	  		question4: "",
 	  		error: "",
-	  		sliderValue: 6
+				sliderValue: 6,
+				week: 0,
+				show: "show-form"
 	  	}
 			axios({
 	      method:'get',
@@ -29,11 +31,51 @@ class FormComponent extends Component {
 	  	.then(response => {
 	  		for (let i = 0; i < response.data.length; i++) {
 	  			if (cookies.get('_id') == response.data[i].accountID) {
+						if (response.data[i].cohortID == null) {
+							this.setState({
+								error: "You have not been assigned a cohort yet, please speak with your trainer.",
+								show: "no-show-form"
+							})
+						}
 			  		this.setState({
-			  			user: response.data[i]
+							user: response.data[i],
+
+							
 			  		})
 	  			}
-	  		}
+				}
+
+				axios({
+					method: 'get',
+					url: constants.gateway + "getCohortByCohortID/" + this.state.user.cohortID
+				})
+				.then(response => {
+					this.setState({
+						week: response.data.week
+					})				
+					
+					axios({
+						method: 'get',
+						url: constants.gateway + "getFeedbackFormsByAccountID/" + this.state.user.accountID
+					})
+					.then(response => {
+
+						console.log("HI");
+
+						for (let k = 0; k < response.data.length; k++) {
+							if (response.data[k].week == this.state.week || this.state.user.cohortID === null) {
+								console.log("HELLO");
+								this.setState({
+									error: "You already submitted this week. Try again next week.",
+									show: "no-show-form"
+								})
+
+								break;
+							}
+						}
+						console.log(response.data);
+					})
+				})
 	  	})
 	}
 
@@ -48,7 +90,8 @@ class FormComponent extends Component {
         question1: this.state.question1,
         question2: this.state.question2,
         question3: this.state.question3,
-        question4: this.state.question4
+				question4: this.state.question4,
+				week: this.state.week
       }
     })
     .then(response => {
@@ -90,9 +133,11 @@ class FormComponent extends Component {
   }
 
   render() {
+
     return (
     	<div className="main-body">
-			<div className="container">
+		 {this.state.error}
+			<div className="container" id={this.state.show}>
 			  <h1 id="heading-form">Form</h1>
 			  <form id="feedback-form-body">
 			    <div className="row">
@@ -111,7 +156,8 @@ class FormComponent extends Component {
 			    </div>
 			    <div className="row">
 			      <div className="col-100">
-			        <textarea id="question1" name="question1" onChange={this.updateQuestion1} />			      </div>
+			        <textarea id="question1" name="question1" onChange={this.updateQuestion1} />
+					 </div>
 			    </div>
 			    <div className="row">
 			      <div className="col-100">
@@ -130,7 +176,8 @@ class FormComponent extends Component {
 			    </div>
 			    <div className="row">
 			      <div className="col-100">
-			        <textarea id="question3" name="question3" onChange={this.updateQuestion3} />			      </div>
+			        <textarea id="question3" name="question3" onChange={this.updateQuestion3} /> 
+					  </div>
 			    </div>
 			    <div className="row">
 			      <div className="col-100">

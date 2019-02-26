@@ -23,7 +23,7 @@ class SingleCohortComponent extends Component {
 			url: constants.gateway + 'getCohortByCohortID/' + props.match.params.id
 		}).then(response => {
 
-			console.log(response);
+			
 
 			this.setState({
 				cohort: response.data,
@@ -49,6 +49,13 @@ class SingleCohortComponent extends Component {
 					traineesList: response.data
 				})
 			}
+		})
+
+		axios({
+			method: 'put',
+			url: constants.gateway + 'updateWeekNumber/' + props.match.params.id
+		}).then(response => {
+
 		})
 	}
 

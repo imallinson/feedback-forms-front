@@ -27,7 +27,7 @@ class Routes extends Component {
 		<TraineeprotectedRoute path="/form" component={ SubmitForm } />
 		<ProtectedRoute  path="/cohorts" component={ Cohorts } />
 		<ProtectedRoute  path="/trainees" component={ Trainees } />
-		<Route path="/account" component={ Account } />
+		<ProtectedRoute path="/account" component={ Account } />
 		<UnprotectedRoute path="/register" component={ Register } />
 		<Route path="/login" component={ Login } />
 		<ProtectedRoute  path="/singlecohort/:id" component={ Cohort } />
