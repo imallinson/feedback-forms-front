@@ -3,6 +3,8 @@ import {
     Route
 } from 'react-router-dom';
 import {ProtectedRoute} from './Protected.route';
+import {UnprotectedRoute} from './Unprotected.route';
+import {TraineeprotectedRoute} from './Traineeprotected.route';
 
 import Homepage from './components/HomepageComponent';
 import SubmitForm from './components/FormComponent';
@@ -22,11 +24,11 @@ class Routes extends Component {
   	<div>
 		<Route exact path="/" component={ Homepage } />
 		<Route path="/home" component={ Homepage } />
-		<Route path="/form" component={ SubmitForm } />
+		<TraineeprotectedRoute path="/form" component={ SubmitForm } />
 		<ProtectedRoute  path="/cohorts" component={ Cohorts } />
 		<ProtectedRoute  path="/trainees" component={ Trainees } />
 		<Route path="/account" component={ Account } />
-		<Route path="/register" component={ Register } />
+		<UnprotectedRoute path="/register" component={ Register } />
 		<Route path="/login" component={ Login } />
 		<ProtectedRoute  path="/singlecohort/:id" component={ Cohort } />
 		<ProtectedRoute  path="/singleuser/:id" component={ User } />
