@@ -16,7 +16,6 @@ class TraineeComponent extends Component {
 
 		axios({
 			method: 'get',
-			// url: constants.get + 'getCohorts'
 			url: constants.gateway + 'getCohorts'
 		}).then(response => {
 			this.setState({
@@ -29,7 +28,6 @@ class TraineeComponent extends Component {
 
 		axios({
 			method: 'get',
-			// url: constants.get + '/accounts/getAccounts'
 			url: constants.gateway + 'getAccounts'
 		}).then(response => {
 			this.setState({
@@ -50,7 +48,6 @@ class TraineeComponent extends Component {
 
 		axios({
 			method: 'put',
-			// url: constants.get + '/accounts/getAccounts'
 			url: constants.gateway + 'updateAccountBy_id/' + unassigned._id,
 			data: {
 				accountID: unassigned.accountID,
@@ -69,7 +66,6 @@ class TraineeComponent extends Component {
 	unAssign = (assigned) => {
 		axios({
 			method: 'put',
-			// url: constants.get + '/accounts/getAccounts'
 			url: constants.gateway + 'updateAccountBy_id/' + assigned._id,
 			data: {
 				accountID: assigned.accountID,
