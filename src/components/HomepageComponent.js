@@ -22,7 +22,6 @@ class HomepageComponent extends Component {
 
 		axios({
 			method: 'get',
-			// url: constants.get + '/accounts/getAccounts'
 			url: constants.gateway + 'getAccounts'
 		}).then(response => {
 
@@ -43,7 +42,6 @@ class HomepageComponent extends Component {
 
 		axios({
 			method: 'get',
-			// url: constants.get + '/cohorts/getCohorts'
 			url: constants.gateway + 'getCohorts'
 		}).then(response => {
 			let date = new Date();
