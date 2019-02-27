@@ -26,7 +26,6 @@ class FormComponent extends Component {
 	  	}
 			axios({
 	      method:'get',
-	      // url: 'http://localhost:8080/accounts/getAccounts',
 	      url: constants.gateway + 'getAccounts'
 	  	})
 	  	.then(response => {
