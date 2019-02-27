@@ -1,7 +1,5 @@
 const constants = {
-	newCohort: "cohorts",
-	newAccount: "accounts",
-	get: "retriever"
+	gateway: "/gateway/"
 }
 
 module.exports = constants

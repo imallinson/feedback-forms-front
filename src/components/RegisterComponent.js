@@ -79,7 +79,8 @@ constructor() {
 
     axios({
         method: "post",
-        url: constants.newAccount + '/accounts/createAccount',
+        // url: constants.newAccount + '/accounts/createAccount',
+        url: constants.gateway + 'createAccount',
         data: {
             firstName: this.state.firstName,
             lastName: this.state.lastName,
@@ -88,10 +89,13 @@ constructor() {
             admin: admin
         }
     }).then(resp => {
-      console.log("HELLO");
-      console.log(resp);
-      if (typeof resp.data == "string") {
-        console.log(typeof resp.data);
+
+      if(resp.data === "") {
+        this.setState({
+          error: "Email already registered."
+        })
+      } 
+      else if (typeof resp.data == "string") {
         this.setState({
           error: resp.data
         });

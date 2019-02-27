@@ -2,10 +2,8 @@ import React, { Component } from 'react';
 import '../App.css';
 import bcrypt from 'bcryptjs';
 import axios from 'axios';
+import auth from '../Auth';
 import * as constants from "../Consts.js";
-
-import auth from '../Auth'
-
 
 class LoginComponent extends Component {
 
@@ -36,7 +34,7 @@ class LoginComponent extends Component {
   setUser = () => {
 		axios({
       method:'get',
-      url: constants.get + '/accounts/getAccounts',
+      url: constants.gateway + 'getAccounts'
   	})
     .then(response => {
     	

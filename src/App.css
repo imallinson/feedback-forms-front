@@ -16,6 +16,14 @@ html, body {
   margin: 0 auto;
 }
 
+#show-form {
+  display: block;
+}
+
+#no-show-form {
+  display: none;
+  width: 5000px;
+}
 
 /*****    START OF NAV    *****/
 #nav-ul {
@@ -235,6 +243,16 @@ html, body {
   -o-transition: .25s all ease;
   transition: .25s all ease;
 }
+
+[type="date"] {
+  background:#fff url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png)  97% 50% no-repeat ;
+}
+[type="date"]::-webkit-inner-spin-button {
+  display: none;
+}
+[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0;
+}
 /*****    END OF COHORTS    *****/
 /*****   START OF TRAINEES  *****/
 .trainees-body {
@@ -309,6 +327,15 @@ html, body {
 }
 .assigned-trainees > ul > span {
   background-color: red;
+}
+#unassigned-trainee {
+  font-size: 1.1em;
+  min-width: 20%;
+  width: auto;
+}
+#cohort-number {
+  width: 60%;
+  font-size: 1.1em;
 }
 /*****    END OF TRAINEES   *****/
 /*****   START OF ACCOUNT   *****/
@@ -506,6 +533,23 @@ tr:nth-child(even) {
 .button:hover {
   background-color: FireBrick;
   color: White;
+}
+#single-user-chart {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.single-user-body {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+#single-user-info {
+  flex: 1;
+}
+
+#single-user-feedback {
+  flex: 2;
 }
 /*****   END OF SINGLE COHORT   *****/
 

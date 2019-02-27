@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import {
-    BrowserRouter as Router,
-    Route,
-    Link
+    Route
 } from 'react-router-dom';
+import {ProtectedRoute} from './Protected.route';
+import {UnprotectedRoute} from './Unprotected.route';
+import {TraineeprotectedRoute} from './Traineeprotected.route';
+
 import Homepage from './components/HomepageComponent';
 import SubmitForm from './components/FormComponent';
 import Cohorts from './components/CohortsComponent';
-import Trainees from './components/TraineesComponent';
+import Trainees from './components/TraineesComponent.1';
 import Account from './components/AccountComponent';
 import Register from './components/RegisterComponent';
 import Login from './components/LoginComponent';
@@ -22,16 +24,16 @@ class Routes extends Component {
   	<div>
 		<Route exact path="/" component={ Homepage } />
 		<Route exact path="/home" component={ Homepage } />
-		<Route exact path="/form" component={ SubmitForm } />
-		<Route exact path="/cohorts" component={ Cohorts } />
-		<Route exact path="/trainees" component={ Trainees } />
-		<Route exact path="/account" component={ Account } />
-		<Route exact path="/register" component={ Register } />
-		<Route exact path="/login" component={ Login } />
-		<Route exact path="/singlecohort/:id" component={ Cohort } />
-		<Route exact path="/singleuser/" component={ User } />
-		<Route exact path="/viewform" component={ ViewForm } />
-		<Route exact path="/newcohort" component={ NewCohort } />
+		<TraineeprotectedRoute path="/form" component={ SubmitForm } />
+		<ProtectedRoute  path="/cohorts" component={ Cohorts } />
+		<ProtectedRoute  path="/trainees" component={ Trainees } />
+		<ProtectedRoute path="/account" component={ Account } />
+		<UnprotectedRoute path="/register" component={ Register } />
+		<Route path="/login" component={ Login } />
+		<ProtectedRoute  path="/singlecohort/:id" component={ Cohort } />
+		<ProtectedRoute  path="/singleuser/:id" component={ User } />
+		<ProtectedRoute  path="/viewform/:id" component={ ViewForm } />
+		<ProtectedRoute  path="/newcohort" component={ NewCohort } />
 	</div>
 	)}
 }

@@ -10,9 +10,10 @@ class NewCohortComponent extends Component {
 
     this.state = {
       cohortName: "",
-      cohortTrainer: "",
+      trainerName: "",
       cohortWeek: "",
-      cohortDescription: ""
+      cohortDescription: "",
+      date: ""
     }
   }
 
@@ -20,12 +21,16 @@ class NewCohortComponent extends Component {
       this.setState({ cohortName: event.target.value });
   }
 
-  updateCohortTrainer = (event) => {
-      this.setState({ cohortTrainer: event.target.value });
+  updateTrainerName = (event) => {
+      this.setState({ trainerName: event.target.value });
   }
 
   updateWeekNumber = (event) => {
       this.setState({ cohortWeek: event.target.value });
+  }
+
+  updateDate = (event) => {
+      this.setState({ date: event.target.value });
   }
 
   updateDescription = (event) => {
@@ -35,21 +40,18 @@ class NewCohortComponent extends Component {
   createCohort = () => {
     axios({
       method: 'post',
-      url: constants.newCohort + '/cohorts/createCohort',
+      url: constants.gateway + 'createCohort',
       data: {
+
         cohortName: this.state.cohortName,
-        trainerName: this.state.cohortTrainer,
+        trainerName: this.state.trainerName,
         week: this.state.cohortWeek,
         cohortDescription: this.state.cohortDescription
       }
     })
     .then(response => {
-      setTimeout(function(){
-        window.history.back();
-        setTimeout(function(){ 
-          window.location.reload()}, 200);
-        }, 300);
-      })
+      this.props.history.push("/cohorts");
+    })
   }
 
   render() {
@@ -71,17 +73,17 @@ class NewCohortComponent extends Component {
 			        <label htmlFor="email">Cohort Trainer</label>
 			      </div>
 			      <div className="col-75">
-			        <input type="text" id="cohort-trainer" name="cohort-trainer" placeholder="Example: Matt Something" onChange={this.updateCohortTrainer} required/>
+			        <input type="text" id="cohort-trainer" name="cohort-trainer" placeholder="Example: Matt Something" onChange={this.updateTrainerName} required/>
 			      </div>
 			    </div>
-			    <div className="row">
-			      <div className="col-25">
-			        <label htmlFor="password">Week Number</label>
-			      </div>
-			      <div className="col-75">
-			        <input type="number" id="cohort-week" name="cohort-week" onChange={this.updateWeekNumber} min="0" required />
-			      </div>
-			    </div>
+          <div className="row">
+            <div className="col-25">
+              <label htmlFor="password">Week Number</label>
+            </div>
+            <div className="col-75">
+              <input type="number" id="cohort-week" name="cohort-week" onChange={this.updateWeekNumber} min="0" required />
+            </div>
+          </div>			    
           <div className="row">
             <div className="col-25">
               <label htmlFor="password">Description</label>

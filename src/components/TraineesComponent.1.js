@@ -11,9 +11,6 @@ class TraineeComponent extends Component {
 		this.state = {
 			trainees: [],
 			cohortList: [],
-			unassignedList: [],
-			assignedList: [],
-			filterList: [],
 			cohortNumber: 0
 		}
 
@@ -33,34 +30,18 @@ class TraineeComponent extends Component {
 			method: 'get',
 			url: constants.gateway + 'getAccounts'
 		}).then(response => {
-
-			let uList = [];
-			let aList = [];
-
 			this.setState({
 				trainees: response.data
-			})
-
-			for (let i = 0; i < response.data.length; i++) {
-				if (response.data[i].cohortID === null && response.data[i].admin === false) {
-					uList.push(response.data[i]);
-				} else if (response.data[i].cohortID != null && response.data[i].admin === false) {
-					aList.push(response.data[i]);
-				}
-			}
-
-			this.setState({
-				unassignedList: uList,
-				assignedList: aList
 			})
 		})
 	}
 
 	updateCohortNumber = (e) => {
-		this.setState({
-			cohortNumber: e.target.value,
-			filterList: this.state.assignedList.filter(assignedTrainee => assignedTrainee.cohortID === parseInt(e.target.value))
-		});
+		if (e.target.value) {
+			this.setState({
+				cohortNumber: e.target.value,
+			});
+		}
 	}
 
 	assign = (unassigned) => {
@@ -78,7 +59,7 @@ class TraineeComponent extends Component {
 			}
 		})
 			.then(response => {
-				console.log(response);
+				window.location.reload();
 			})
 	}
 
@@ -96,21 +77,24 @@ class TraineeComponent extends Component {
 			}
 		})
 			.then(response => {
-				let uL = this.state.unassignedList;
-				uL.push(assigned);
-				let aL = this.state.assignedList.filter(a => a != assigned);
-				console.log("AL: ")
-				this.setState({ unassignedList: uL, assignedList: });
+				let trainees = this.state.trainees;
+				for (let i = 0; i < trainees.length; i++) {
+					if (trainees[i].accountID === response.data.accountID) {
+						trainees[i] = response.data;
+						break;
+					}
+				}
+				this.setState({ trainees: trainees });
+				window.location.reload()
 			})
 	}
 
 	render() {
-
-		let unassignedList = this.state.unassignedList.map((unassignedTrainee, i) => (
+		let unassignedList = this.state.trainees.filter(t => t.cohortID === null && t.admin === false).map((unassignedTrainee, i) => (
 			<li id="unassigned-trainee" key={i} onClick={() => this.assign(unassignedTrainee)}>{unassignedTrainee.email.substr(0, unassignedTrainee.email.indexOf('@'))}</li>
 		));
-
-		let filteredList = this.state.filterList.map((filteredTrainee, i) => (
+		
+		let filteredList = this.state.trainees.filter(t => t.cohortID && t.cohortID === parseInt(this.state.cohortNumber)).map((filteredTrainee, i) => (
 			<li id="filtered-trainee" key={i} onClick={() => this.unAssign(filteredTrainee)}>{filteredTrainee.email.substr(0, filteredTrainee.email.indexOf('@'))}</li>
 		));
 
