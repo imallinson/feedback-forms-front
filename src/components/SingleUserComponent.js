@@ -67,7 +67,6 @@ class SingleUserComponent extends Component {
 	flagTrainee = () => {
 		axios({
 			method: 'put',
-			// url: constants.get + '/accounts/getAccounts'
 			url: constants.gateway + 'updateAccountBy_id/' + this.state.trainee._id,
 			data: {
 				accountID: this.state.trainee.accountID,
