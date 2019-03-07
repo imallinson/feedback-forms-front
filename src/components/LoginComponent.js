@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import '../App.css';
 import bcrypt from 'bcryptjs';
 import axios from 'axios';
-import * as constants from "../Consts.js";
-
 import auth from '../Auth';
 import * as constants from "../Consts.js";
 
