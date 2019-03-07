@@ -62,6 +62,7 @@ class TraineeComponent extends Component {
 			}
 		})
 			.then(response => {
+				window.location.reload();
 			})
 	}
 
@@ -88,6 +89,7 @@ class TraineeComponent extends Component {
 					}
 				}
 				this.setState({ trainees: trainees });
+				window.location.reload()
 			})
 	}
 

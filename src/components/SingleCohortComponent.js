@@ -50,13 +50,6 @@ class SingleCohortComponent extends Component {
 				})
 			}
 		})
-
-		axios({
-			method: 'put',
-			url: constants.gateway + 'updateWeekNumber/' + props.match.params.id
-		}).then(response => {
-
-		})
 	}
 
   render() {

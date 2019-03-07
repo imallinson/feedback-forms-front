@@ -104,7 +104,7 @@ class TraineeComponent extends Component {
 				uL.push(assigned);
 				let aL = this.state.assignedList.filter(a => a != assigned);
 				console.log("AL: ")
-				this.setState({ unassignedList: uL, assignedList:  });
+				this.setState({ unassignedList: uL, assignedList: });
 			})
 	}
 

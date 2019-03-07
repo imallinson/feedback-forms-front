@@ -89,6 +89,7 @@ class FormComponent extends Component {
       }
     })
     .then(response => {
+			this.props.history.push("/");
       })
   }
 

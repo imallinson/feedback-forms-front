@@ -4,8 +4,6 @@ import axios from 'axios';
 import * as constants from "../Consts.js";
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts';
 
-var data = [];
-
 class SingleUserComponent extends Component {
 
 

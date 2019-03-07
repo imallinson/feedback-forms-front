@@ -23,7 +23,7 @@ class Routes extends Component {
   	return (
   	<div>
 		<Route exact path="/" component={ Homepage } />
-		<Route path="/home" component={ Homepage } />
+		<Route exact path="/home" component={ Homepage } />
 		<TraineeprotectedRoute path="/form" component={ SubmitForm } />
 		<ProtectedRoute  path="/cohorts" component={ Cohorts } />
 		<ProtectedRoute  path="/trainees" component={ Trainees } />
