@@ -20,6 +20,8 @@ class Auth {
 		this.authenticated = true;
 		setTimeout(function(){
 			window.history.back();
+			setTimeout(function(){ 
+				window.location.reload()}, 100);
 		}, 500);
 	}
 

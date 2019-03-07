@@ -89,7 +89,13 @@ constructor() {
             admin: admin
         }
     }).then(resp => {
-      if (typeof resp.data == "string") {
+
+      if(resp.data === "") {
+        this.setState({
+          error: "Email already registered."
+        })
+      } 
+      else if (typeof resp.data == "string") {
         this.setState({
           error: resp.data
         });
