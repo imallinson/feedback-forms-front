@@ -26,9 +26,6 @@ class ViewFormComponent extends Component {
 				method: 'get',
 				url: constants.gateway + 'getAccountByAccountID/' + response.data.accountID
 			}).then(res => {
-
-				console.log(res);
-
 				this.setState({
 					user: res.data
 				})

@@ -17,9 +17,6 @@ class CohortsComponent extends Component {
 			// url: constants.get + 'getCohorts'
 			url: constants.gateway + 'getCohorts'
 		}).then(response => {
-
-			console.log(response);
-
 			this.setState({
 				cohortList: response.data
 			})

@@ -14,7 +14,8 @@ class FormComponent extends Component {
 
 	  	this.state = {
 	  		user: "",
-	  		question1: "",
+				question1: "",
+				question1Chars: 0,
 	  		question2: "",
 	  		question3: "",
 	  		question4: "",
@@ -38,9 +39,7 @@ class FormComponent extends Component {
 							})
 						}
 			  		this.setState({
-							user: response.data[i],
-
-							
+							user: response.data[i]							
 			  		})
 	  			}
 				}
@@ -59,12 +58,8 @@ class FormComponent extends Component {
 						url: constants.gateway + "getFeedbackFormsByAccountID/" + this.state.user.accountID
 					})
 					.then(response => {
-
-						console.log("HI");
-
 						for (let k = 0; k < response.data.length; k++) {
 							if (response.data[k].week == this.state.week || this.state.user.cohortID === null) {
-								console.log("HELLO");
 								this.setState({
 									error: "You already submitted this week. Try again next week.",
 									show: "no-show-form"
@@ -73,7 +68,6 @@ class FormComponent extends Component {
 								break;
 							}
 						}
-						console.log(response.data);
 					})
 				})
 	  	})
@@ -95,13 +89,13 @@ class FormComponent extends Component {
       }
     })
     .then(response => {
-    	console.log(this.state.user.accountID);
-    	console.log(response);
       })
   }
 
   updateQuestion1 = (event) => {
-      this.setState({ question1: event.target.value });
+			this.setState({ question1: event.target.value,
+											question1Chars: this.state.question1.length+1
+			});
   }
 
   updateQuestion2 = (event) => {
@@ -157,6 +151,7 @@ class FormComponent extends Component {
 			    <div className="row">
 			      <div className="col-100">
 			        <textarea id="question1" name="question1" onChange={this.updateQuestion1} />
+							<div>{this.state.question1Chars}/50</div>
 					 </div>
 			    </div>
 			    <div className="row">

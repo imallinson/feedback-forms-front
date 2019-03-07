@@ -85,14 +85,6 @@ class NewCohortComponent extends Component {
             </div>
           </div>			    
           <div className="row">
-			      <div className="col-25">
-			        <label htmlFor="date">Week Number</label>
-			      </div>
-			      <div className="col-75">
-			        <input type="date" onChange={this.updateDate} name="cohort-start" id="cohort-start"/>
-			      </div>
-			    </div>
-          <div className="row">
             <div className="col-25">
               <label htmlFor="password">Description</label>
             </div>

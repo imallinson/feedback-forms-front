@@ -65,12 +65,6 @@ class TraineeComponent extends Component {
 		});
 	}
 
-	componentDidUpdate = () => {
-		console.log(this.state.cohortNumber);
-	}
-
-
-
 	assign = (unassigned) => {
 
 		axios({

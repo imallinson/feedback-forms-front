@@ -90,7 +90,6 @@ constructor() {
         }
     }).then(resp => {
       if (typeof resp.data == "string") {
-        console.log(typeof resp.data);
         this.setState({
           error: resp.data
         });

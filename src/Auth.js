@@ -20,17 +20,16 @@ class Auth {
 		this.authenticated = true;
 		setTimeout(function(){
 			window.history.back();
-			setTimeout(function(){ 
-				window.location.reload()}, 100);
 		}, 500);
 	}
 
 	logout(cb) {
-
-		cookies.remove('email');
-		cookies.remove('_id');
-		cookies.remove('admin');
-		this.authenticated = false;
+			cookies.remove('email');
+			cookies.remove('_id');
+			cookies.remove('admin');
+			this.authenticated = false;
+		setTimeout(function(){
+		}, 1000);
 	}
 
 	isAuthenticated() {

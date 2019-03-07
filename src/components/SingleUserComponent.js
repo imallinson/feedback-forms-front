@@ -29,8 +29,6 @@ class SingleUserComponent extends Component {
 				trainee: response.data,
 				flagged: response.data.flagged.toString()
 			})
-
-			console.log(response.data);
 		})
 
 		axios({
@@ -102,7 +100,7 @@ class SingleUserComponent extends Component {
   	));
 
 	const renderLineChart = (
-	  <LineChart width={900} height={300} data={this.data}>
+	  <LineChart width={800} height={300} data={this.data}>
 	    <Line type="monotone" dataKey="uv" stroke="#8884d8" />
 	    <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
 	    <XAxis dataKey="name" />
